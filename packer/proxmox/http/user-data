@@ -1,0 +1,39 @@
+#cloud-config
+autoinstall:
+  version: 1
+  locale: en_US
+  keyboard:
+    layout: en
+    variant: us
+  ssh:
+    install-server: true
+    allow-pw: true
+    # disable_root: true
+    # ssh_quiet_keygen: true
+    # allow_public_ssh_keys: true
+  packages:
+    - qemu-guest-agent
+    # - sudo
+  storage:
+    layout:
+      name: direct
+    swap:
+      size: 0
+  # identity:
+  #   hostname: packer-ubuntu-22
+  #   password: 
+  #   username: ubuntu
+  #   realname: ubuntu
+  user-data:
+    package_upgrade: false
+    timezone: America/Los_Angeles
+    users:
+      - name: packer
+        groups: [adm, sudo]
+        hashed_passwd: $1$xyz$qomcTn3V5gMRwpU3MSlcd.
+        lock_passwd: false
+        sudo: ALL=(ALL) NOPASSWD:ALL
+        shell: /bin/bash
+  #       # - or -
+  #       # ssh_authorized_keys:
+  #       #   - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC3D8LC4BBryXYk6nG8z8W/J4n0uCY8KDs5pzRpDJV4o sonofborge@protonmail.com
