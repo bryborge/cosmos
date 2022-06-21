@@ -17,6 +17,24 @@ variable "proxmox_api_token_secret" {
   sensitive   = true
 }
 
+variable "proxmox_node" {
+  type        = string
+  default     = "pve"
+  description = "The proxmox node on which to create the VM."
+}
+
+variable "proxmox_storage_pool" {
+  type = string
+  default = "local-lvm"
+  description = "The proxmox storage pool for the VM to use."
+}
+
+variable "proxmox_vm_id" {
+  type        = string
+  default     = "9000"
+  description = "The proxmox VM id."
+}
+
 variable "session_user" {
   type        = string
   default     = "packer"

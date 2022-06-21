@@ -1,7 +1,7 @@
 /**
  * Ubuntu Server 22.04 LTS (Jammy)
  * ---
- * Packer Template to create an Ubuntu Server (jammy) on Proxmox
+ * An Ubuntu Server (Jammy) image preloaded with Docker for Proxmox
  */
 
 packer {
@@ -11,7 +11,7 @@ packer {
 /**
  * Builder Configuration
  */
-source "proxmox" "ubuntu-server-jammy" {
+source "proxmox" "ubuntu-server-jammy-docker" {
   // Proxmox Connection
   proxmox_url              = "${var.proxmox_api_url}"
   username                 = "${var.proxmox_api_token_id}"
@@ -19,21 +19,21 @@ source "proxmox" "ubuntu-server-jammy" {
   insecure_skip_tls_verify = true
 
   // Proxmox General
-  node                 = "pve"
-  vm_id                = "9000"
-  vm_name              = "ubuntu-server-jammy"
-  template_description = "Ubuntu Server 22.04 (Jammy) Image"
+  node                 = "${var.proxmox_node}"
+  vm_id                = "${var.proxmox_vm_id}"
+  vm_name              = "ubuntu-server-jammy-docker"
+  template_description = "An Ubuntu Server (Jammy) image preloaded with Docker for Proxmox"
   qemu_agent           = true
 
   // Compute Size
-  cores  = "1"
+  cores  = "2"
   memory = "8192"
 
   // Hard Disk
   scsi_controller = "virtio-scsi-pci"
   disks {
     disk_size         = "100G"
-    storage_pool      = "tank"
+    storage_pool      = "${var.proxmox_storage_pool}"
     storage_pool_type = "lvm"
     type              = "virtio"
   }
@@ -53,7 +53,7 @@ source "proxmox" "ubuntu-server-jammy" {
 
   // Cloud-Init
   cloud_init              = true
-  cloud_init_storage_pool = "tank"
+  cloud_init_storage_pool = "${var.proxmox_storage_pool}"
 
   // Boot Settings
   boot_command = [
@@ -68,7 +68,7 @@ source "proxmox" "ubuntu-server-jammy" {
   boot_wait = "10s"
 
   // Auto-install Settings
-  http_directory = "http"
+  http_directory = "cloud-init/http"
 
   // SSH Settings
   ssh_username = "${var.session_user}"
@@ -80,26 +80,16 @@ source "proxmox" "ubuntu-server-jammy" {
  * Builder
  */
 build {
-  name        = "ubuntu-server-jammy"
-  description = "Ubuntu Server 22.04 (Jammy) Base Image"
-  sources     = ["source.proxmox.ubuntu-server-jammy"]
+  name        = "ubuntu-server-jammy-docker"
+  description = "Ubuntu Server 22.04 (Jammy) image preloaded with Docker"
+  sources     = ["source.proxmox.ubuntu-server-jammy-docker"]
 
   provisioner "shell" {
-    inline = [
-      "while [ ! -f /var/lib/cloud/instance/boot-finished ]; do echo 'Waiting for cloud-init...'; sleep 1; done",
-      "sudo rm /etc/ssh/ssh_host_*",
-      "sudo truncate -s 0 /etc/machine-id",
-      "sudo apt -y autoremove --purge",
-      "sudo apt -y clean",
-      "sudo apt -y autoclean",
-      "sudo cloud-init clean",
-      "sudo rm -f /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg",
-      "sudo sync"
-    ]
+    script = "scripts/setup-cloud-init.sh"
   }
 
   provisioner "file" {
-    source      = "files/99-pve.cfg"
+    source      = "cloud-init/files/99-pve.cfg"
     destination = "/tmp/99-pve.cfg"
   }
 
@@ -110,12 +100,6 @@ build {
   }
 
   provisioner "shell" {
-    inline = [
-      "sudo apt-get install -y ca-certificates curl gnupg lsb-release",
-      "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg",
-      "echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null",
-      "sudo apt-get -y update",
-      "sudo apt-get install -y docker-ce docker-ce-cli containerd.io"
-    ]
+    script = "scripts/install-docker.sh"
   }
 }
