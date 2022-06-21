@@ -8,32 +8,23 @@ autoinstall:
   ssh:
     install-server: true
     allow-pw: true
-    # disable_root: true
-    # ssh_quiet_keygen: true
-    # allow_public_ssh_keys: true
+    disable_root: true
+    ssh_quiet_keygen: true
+    allow_public_ssh_keys: true
   packages:
     - qemu-guest-agent
-    # - sudo
   storage:
     layout:
       name: direct
     swap:
       size: 0
-  # identity:
-  #   hostname: packer-ubuntu-22
-  #   password: 
-  #   username: ubuntu
-  #   realname: ubuntu
   user-data:
     package_upgrade: false
     timezone: America/Los_Angeles
     users:
-      - name: packer
+      - name: xsob
         groups: [adm, sudo]
-        hashed_passwd: $1$xyz$qomcTn3V5gMRwpU3MSlcd.
+        hashed_passwd: $1$xyz$vdZ7396GW5r17.GTolu2y1
         lock_passwd: false
         sudo: ALL=(ALL) NOPASSWD:ALL
         shell: /bin/bash
-  #       # - or -
-  #       # ssh_authorized_keys:
-  #       #   - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC3D8LC4BBryXYk6nG8z8W/J4n0uCY8KDs5pzRpDJV4o sonofborge@protonmail.com
