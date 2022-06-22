@@ -1,1 +1,8 @@
-packer/proxmox/secrets/secrets.json
+# Packer
+secrets.json
+
+# Terraform
+.terraform/
+
+# Misc
+*.log

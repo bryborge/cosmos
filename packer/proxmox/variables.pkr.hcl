@@ -24,15 +24,21 @@ variable "proxmox_node" {
 }
 
 variable "proxmox_storage_pool" {
-  type = string
-  default = "local-lvm"
+  type        = string
+  default     = "local-lvm"
   description = "The proxmox storage pool for the VM to use."
 }
 
-variable "proxmox_vm_id" {
+variable "vm_template_id" {
   type        = string
   default     = "9000"
-  description = "The proxmox VM id."
+  description = "The VM template id."
+}
+
+variable "vm_template_name" {
+  type        = string
+  default     = "ubuntu-server-jammy-docker"
+  description = " The VM template name."
 }
 
 variable "session_user" {
