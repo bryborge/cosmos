@@ -20,7 +20,7 @@ provider "proxmox" {
 }
 
 ##
-# RESOURCE
+# RESOURCES
 #
 resource "proxmox_vm_qemu" "dockserv" {
   count = 1

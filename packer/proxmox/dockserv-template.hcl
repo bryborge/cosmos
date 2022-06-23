@@ -5,7 +5,7 @@ packer {
 ##
 # SOURCE
 #
-source "proxmox" "ubuntu-server-jammy-docker" {
+source "proxmox" "dockserv-template" {
   # Proxmox Connection
   proxmox_url              = var.proxmox_api_url
   username                 = var.proxmox_api_token_id
@@ -21,7 +21,7 @@ source "proxmox" "ubuntu-server-jammy-docker" {
 
   # Compute Size
   cores  = "1"
-  memory = "2048"
+  memory = "1024"
 
   # Hard Disk
   scsi_controller = "virtio-scsi-pci"
@@ -74,9 +74,9 @@ source "proxmox" "ubuntu-server-jammy-docker" {
 # BUILDER
 #
 build {
-  name        = "ubuntu-server-jammy-docker"
+  name        = "dockserv-template"
   description = "Ubuntu Server 22.04 (Jammy) image preloaded with Docker"
-  sources     = ["source.proxmox.ubuntu-server-jammy-docker"]
+  sources     = ["source.proxmox.dockserv-template"]
 
   provisioner "shell" {
     script = "scripts/setup-cloud-init.sh"

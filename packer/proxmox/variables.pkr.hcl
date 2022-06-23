@@ -1,6 +1,6 @@
 variable "proxmox_api_url" {
   type        = string
-  default     = "https://localhost:8006/api2/json/"
+  default     = "https://localhost:8006/api2/json"
   description = "The URL where proxmox api can be found."
 }
 
