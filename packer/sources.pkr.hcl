@@ -1,11 +1,7 @@
-packer {
-  required_version = ">= 1.8.0"
-}
-
 ##
-# SOURCE
+# PROXMOX
 #
-source "proxmox" "dockserv-template" {
+source "proxmox" "baseos-template" {
   # Proxmox Connection
   proxmox_url              = var.proxmox_api_url
   username                 = var.proxmox_api_token_id
@@ -62,38 +58,10 @@ source "proxmox" "dockserv-template" {
   boot_wait = "10s"
 
   # Auto-install Settings
-  http_directory = "cloud-init/http"
+  http_directory = "../cloud-init/baseos"
 
   # SSH Settings
   ssh_username = var.session_user
   ssh_password = var.session_user_password
   ssh_timeout  = "15m"
-}
-
-##
-# BUILDER
-#
-build {
-  name        = "dockserv-template"
-  description = "Ubuntu Server 22.04 (Jammy) image preloaded with Docker"
-  sources     = ["source.proxmox.dockserv-template"]
-
-  provisioner "shell" {
-    script = "scripts/setup-cloud-init.sh"
-  }
-
-  provisioner "file" {
-    source      = "cloud-init/files/99-pve.cfg"
-    destination = "/tmp/99-pve.cfg"
-  }
-
-  provisioner "shell" {
-    inline = [
-      "sudo cp /tmp/99-pve.cfg /etc/cloud/cloud.cfg.d/99-pve.cfg"
-    ]
-  }
-
-  provisioner "shell" {
-    script = "scripts/install-docker.sh"
-  }
 }

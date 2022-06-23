@@ -37,7 +37,7 @@ variable "vm_template_id" {
 
 variable "vm_template_name" {
   type        = string
-  default     = "ubuntu-server-jammy-docker"
+  default     = "baseos-template"
   description = " The VM template name."
 }
 
