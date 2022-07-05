@@ -2,6 +2,10 @@
 autoinstall:
   version: 1
   locale: en_US
+  # identity:
+  #   hostname: ubuntu-server
+  #   password: "$6$exDY1mhS4KUYCE/2$zmn9ToZwTKLhCw.b4/b.ZRTIZM30JZ4QrOQ2aOXJ8yk96xpcCof0kxKwuX1kqLG/ygbJ1f8wxED22bTL4F46P0" # ubuntu
+  #   username: ubuntu
   keyboard:
     layout: en
     variant: us
@@ -22,9 +26,9 @@ autoinstall:
     package_upgrade: false
     timezone: America/Los_Angeles
     users:
-      - name: xsob
+      - name: ubuntu
         groups: [adm, sudo]
-        hashed_passwd: $1$xyz$vdZ7396GW5r17.GTolu2y1
+        hashed_passwd: $6$exDY1mhS4KUYCE/2$zmn9ToZwTKLhCw.b4/b.ZRTIZM30JZ4QrOQ2aOXJ8yk96xpcCof0kxKwuX1kqLG/ygbJ1f8wxED22bTL4F46P0
         lock_passwd: false
         sudo: ALL=(ALL) NOPASSWD:ALL
         shell: /bin/bash
