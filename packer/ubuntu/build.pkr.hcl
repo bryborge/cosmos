@@ -37,7 +37,7 @@ EOF
     iso_checksum         = local.ubuntu_2004_iso_checksum
     boot_command         = local.ubuntu_2004_boot_command
     boot                 = "c"
-    boot_wait            = "5s"
+    boot_wait            = "2s"
     vm_id                = 9000
     vm_name              = "ubuntu-server-20.04.4"
     template_description = "Ubuntu Server 20.04.4 preloaded with Docker."

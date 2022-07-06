@@ -7,7 +7,7 @@ locals {
     "/casper/vmlinuz ",
     "root=/dev/sr0 ",
     "initrd=/casper/initrd ",
-    "autoinstall ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ---<wait>",
+    "autoinstall ds=nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/",
     "<enter>"
   ]
 }
