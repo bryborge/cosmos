@@ -11,11 +11,8 @@ source "proxmox" "base-ubuntu-amd64" {
   insecure_skip_tls_verify = true
 
   # General
-  node                 = "pve" # required
-  vm_id                = 9000
-  vm_name              = "ubuntu-server-${var.ubuntu_version}"
-  template_description = "Ubuntu Server ${var.ubuntu_version} preloaded with Docker."
-  qemu_agent           = true
+  node       = "pve" # required
+  qemu_agent = true
 
   # ISO
   iso_storage_pool = "local" # required
@@ -52,5 +49,5 @@ source "proxmox" "base-ubuntu-amd64" {
   // # SSH Settings
   ssh_username = local.session_user
   ssh_password = local.session_user_password
-  ssh_timeout  = "15m"
+  ssh_timeout  = "20m"
 }
