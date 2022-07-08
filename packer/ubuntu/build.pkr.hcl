@@ -1,14 +1,3 @@
-packer {
-  required_version = ">= 1.8.0"
-
-  required_plugins {
-    proxmox = {
-      version = ">= 1.0.8"
-      source  = "github.com/hashicorp/proxmox"
-    }
-  }
-}
-
 build {
   name        = "ubuntu"
   description = <<EOF
@@ -16,6 +5,7 @@ This build creates machine images for ubuntu versions:
 * 22.04
 * 20.04
 For the following builders:
+* amazon-ebs
 * proxmox-iso
 EOF
 
@@ -41,6 +31,14 @@ EOF
     vm_id                = 9000
     vm_name              = "ubuntu-server-20.04.4"
     template_description = "Ubuntu Server 20.04.4 preloaded with Docker."
+  }
+
+  source "amazon-ebs.base-ubuntu-amd64" {
+    name            = "20.04.4"
+    ami_name        = "ubuntu-server-20.04.4"
+    ami_description = "Ubuntu Server 20.04.4 preloaded with Docker."
+    instance_type   = "t2.micro"
+    region          = "us-west-2"
   }
 
   provisioner "shell" {
