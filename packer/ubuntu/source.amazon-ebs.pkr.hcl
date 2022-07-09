@@ -15,5 +15,7 @@ source "amazon-ebs" "base-ubuntu-amd64" {
     owners      = ["099720109477"] # Canonical
   }
 
+  user_data_file = "../../cloud-init/user-data"
+
   ssh_username = "ubuntu"
 }
