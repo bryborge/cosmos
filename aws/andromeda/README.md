@@ -6,7 +6,28 @@ Cloud infrastructure resource definitions and configuration.
 
 Acct #: `388372205874`
 
-More info coming soon ...
+## Helpful Commands
+
+*   Create VPC stack
+
+    ```sh
+    aws cloudformation create-stack \
+      --stack-name 'alpheratz-vpc' \
+      --template-body file://aws/andromeda/alpheratz-vpc/stack.yml \
+      --parameters file://aws/andromeda/alpheratz-vpc/params/us-west-2/388372205874.json
+    ```
+
+*   Describe VPC stack
+
+    ```sh
+    aws cloudformation describe-stacks --stack-name 'alpheratz-vpc'
+    ```
+
+*   Delete VPC stack
+
+    ```sh
+    aws cloudformation delete-stack --stack-name 'alpheratz-vpc'
+    ```
 
 ## References
 

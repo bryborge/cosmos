@@ -54,7 +54,6 @@ Resources:
     Properties:
       CidrBlock: !Ref 'PrivateSubnet1CidrBlock'
       AvailabilityZone: !Join ['', [!Ref 'AWS::Region', 'a']]
-      MapPrivateIpOnLaunch: true
       VpcId: !Ref 'AlpheratzVPC'
       Tags:
         - Key: Name
