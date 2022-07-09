@@ -9,18 +9,24 @@
 Cosmos is a mono-repo where I define and manage infrastructure in my homelab, and on various cloud provider platforms,
 adhering to infrastructure-as-code principles where possible.
 
+## Naming Structure
+
+| Name                        | Description                            |
+| --------------------------- | -------------------------------------- |
+| _Cosmos_                    | _This IaC monorepo_                    |
+| Galaxy Name                 | The name of an hosting-service/account |
+| Star Name                   | A Virtual Private Cloud (VPC)          |
+| Planetary/Space Object Name | A Computational Resource               |
+
+
 ### Tools
 
 *   [Packer](https://www.packer.io/) - Identical machine images for multiple platforms from a single source 
     configuration.
 *   [Cloud Init](https://cloudinit.readthedocs.io/en/latest/) - Industry standard multi-distribution method for
     cross-platform cloud instance initialization.
-*   [Ansible](https://www.ansible.com/) - IT automation platform that makes applications and systems easier to deploy
-    and maintain.
 *   [Terraform](https://www.terraform.io/) - IaC tool for building, changing, and versioning infrastructure safely
     and efficiently.
-    *   [Terragrunt](https://terragrunt.gruntwork.io/) - (coming soon ...)
-*   [Vagrant](https://www.vagrantup.com/) - A tool for building and distributing development environments.
 
 ## License
 

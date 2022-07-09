@@ -1,0 +1,10 @@
+[
+  {
+    "ParameterKey": "Name",
+    "ParameterValue": "Alpheratz-VPC"
+  },
+  {
+    "ParameterKey": "CidrBlock",
+    "ParameterValue": "10.42.0.0/16"
+  }
+]

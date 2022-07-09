@@ -1,0 +1,62 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "The primary VPC in Andromeda."
+# Metadata:
+#   Instances:
+#     Description:
+#   Databases:
+#     Description:
+Parameters:
+  Name:
+    Type: String
+    Description: Descriptive name for the VPC.
+  CidrBlock:
+    Type: String
+    Description: CIDR address range for the entire VPC.
+    AllowedPattern: ((\d{1,3})\.){3}\d{1,3}/\d{1,2}
+    Default: 10.1.0.0/16
+# Rules:
+# Mappings:
+# Conditions:
+# Transform:
+Resources:
+  AlpheratzVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !Ref CidrBlock
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      InstanceTenancy: default
+      Tags:
+        - Key: Name
+          Value: !Ref Name
+  AlpheratzIGW:
+    Type: AWS::EC2::InternetGateway
+    DependsOn: AlpheratzVPC
+    Properties:
+      Tags:
+        - Key: Name
+          Value: !Sub ${Name} Internet Gateway
+        - Key: Group
+          Value: !Ref Name
+  AlpheratzIGWAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref AlpheratzVPC
+      InternetGatewayId: !Ref AlpheratzIGW
+Outputs:
+  AlpheratzVPC:
+    Description: 'The primary VPC in Andromeda.'
+    Value: !Ref AlpheratzVPC
+    Export:
+      Name: PrimaryVPC
+  VpcId:
+    Description: Resource ID for the Alpheratz VPC.
+    Value: !Ref AlpheratzVPC
+    Export:
+      Name: Alpheratz-vpc-id
+  VpcCidrBlock:
+    Description: CIDR address range for the AlpheratzVPC.
+    Value: !GetAtt AlpheratzVPC.CidrBlock
+  InternetGatewayId:
+    Description: Resource ID for AlpheratzVPC's Internet Gateway.
+    Value: !Ref AlpheratzIGW

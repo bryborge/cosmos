@@ -1,1 +1,1 @@
-# Packer-generated Golden Images
+# Packer-generated Base Images
