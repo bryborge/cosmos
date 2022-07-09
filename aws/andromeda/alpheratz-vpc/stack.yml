@@ -1,5 +1,5 @@
-AWSTemplateFormatVersion: "2010-09-09"
-Description: "The primary VPC in Andromeda."
+AWSTemplateFormatVersion: 2010-09-09
+Description: The primary VPC in Andromeda.
 # Metadata:
 #   Instances:
 #     Description:
