@@ -6,7 +6,7 @@
 
 ## About the Project
 
-Cosmos is a mono-repo where I define and manage infrastructure in my homelab, and on various cloud provider platforms,
+Cosmos is a monorepo where I define and manage infrastructure in my homelab, and on various cloud provider platforms,
 adhering to infrastructure-as-code principles where possible.
 
 ## Naming Structure
