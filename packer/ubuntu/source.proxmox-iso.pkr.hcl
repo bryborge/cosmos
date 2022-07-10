@@ -44,7 +44,7 @@ source "proxmox" "base-ubuntu-amd64" {
   # https://cloudinit.readthedocs.io/en/latest/topics/datasources/nocloud.html
   cloud_init              = true
   cloud_init_storage_pool = "tank"
-  http_directory          = "../../cloud-init"
+  http_directory          = "../cloud-init"
 
   // # SSH Settings
   ssh_username = local.session_user

@@ -9,6 +9,9 @@ For the following builders:
 * proxmox-iso
 EOF
 
+  ##
+  # Proxmox Builds
+  #
   source "proxmox.base-ubuntu-amd64" {
     name                 = "22.04"
     iso_url              = local.ubuntu_2204_iso_url
@@ -17,31 +20,48 @@ EOF
     boot                 = "c"
     boot_wait            = "10s"
     vm_id                = 9001
-    vm_name              = "ubuntu-server-22.04"
-    template_description = "Ubuntu Server 22.04 preloaded with Docker."
+    vm_name              = "xsob-ubuntu-server-22.04"
+    template_description = "Custom Ubuntu Server 22.04."
   }
 
   source "proxmox.base-ubuntu-amd64" {
-    name                 = "20.04.4"
+    name                 = "20.04"
     iso_url              = local.ubuntu_2004_iso_url
     iso_checksum         = local.ubuntu_2004_iso_checksum
     boot_command         = local.ubuntu_2004_boot_command
     boot                 = "c"
     boot_wait            = "2s"
     vm_id                = 9000
-    vm_name              = "ubuntu-server-20.04.4"
-    template_description = "Ubuntu Server 20.04.4 preloaded with Docker."
+    vm_name              = "xsob-ubuntu-server-20.04"
+    template_description = "Custom Ubuntu Server 20.04."
+  }
+
+  ##
+  # AWS Builds
+  #
+  source "amazon-ebs.base-ubuntu-amd64" {
+    name            = "22.04"
+    source_ami      = local.ubuntu_2204_base_ami
+    profile         = "default"
+    region          = "us-west-2"
+    instance_type   = local.instance_type
+    ami_name        = "xsob-ubuntu-server-22.04"
+    ami_description = "Custom Ubuntu Server 22.04."
   }
 
   source "amazon-ebs.base-ubuntu-amd64" {
-    name                        = "20.04.4"
-    ami_name                    = "ubuntu-server-20.04.4"
-    ami_description             = "Ubuntu Server 20.04.4 preloaded with Docker."
-    profile                     = "default"
-    instance_type               = "t2.micro"
-    region                      = "us-west-2"
+    name            = "20.04"
+    source_ami      = local.ubuntu_2004_base_ami
+    profile         = "default"
+    region          = "us-west-2"
+    instance_type   = local.instance_type
+    ami_name        = "xsob-ubuntu-server-20.04"
+    ami_description = "Custom Ubuntu Server 20.04."
   }
 
+  ##
+  # Provisioners
+  #
   provisioner "shell" {
     script = "scripts/setup-cloud-init.sh"
   }
