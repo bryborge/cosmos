@@ -11,13 +11,12 @@ adhering to infrastructure-as-code principles where possible.
 
 ## Naming Structure
 
-| Name                        | Description                            |
-| --------------------------- | -------------------------------------- |
-| _Cosmos_                    | _This IaC monorepo_                    |
-| Galaxy Name                 | The name of an hosting-service/account |
-| Star Name                   | A Virtual Private Cloud (VPC)          |
-| Planetary/Space Object Name | A Computational Resource               |
-
+| Name                        | Description                         |
+| --------------------------- | ----------------------------------- |
+| _Cosmos_                    | _This IaC monorepo_                 |
+| Galaxy Name                 | A platform (e.g. AWS, GCP, Proxmox) |
+| Star Name                   | A Virtual Private Cloud (VPC)       |
+| Planetary/Space Object Name | A Computational Resource            |
 
 ### Tools
 

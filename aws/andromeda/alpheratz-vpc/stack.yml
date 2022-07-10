@@ -74,6 +74,45 @@ Resources:
     Properties:
       VpcId: !Ref AlpheratzVPC
       InternetGatewayId: !Ref AlpheratzIGW
+  AlpheratzPublicRoutes:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref 'AlpheratzVPC'
+      Tags:
+        - Key: Name
+          Value: Alpheratz Public Routes
+        - Key: Group
+          Value: Alpheratz
+  AlpheratzPublicSubnet1Routes:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref 'AlpheratzPublicRoutes'
+      SubnetId: !Ref 'AlpheratzPublicSubnet1'
+  AlpheratzPublicDefaultRoute:
+    Type: AWS::EC2::Route
+    Properties:
+      DestinationCidrBlock: 0.0.0.0/0
+      RouteTableId: !Ref 'AlpheratzPublicRoutes'
+      GatewayId: !Ref 'AlpheratzIGW'
+    DependsOn: AlpheratzIGWAttachment
+  AlpheratzSG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Alpheratz Hosts
+      VpcId: !Ref 'AlpheratzVPC'
+      Tags:
+        - Key: Group
+          Value: Alpheratz
+        - Key: Name
+          Value: Alpheratz Host Security Group
+  AlpheratzSGIngressAllowSSH:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      GroupId: !Ref 'AlpheratzSG'
+      IpProtocol: tcp
+      FromPort: 22
+      ToPort: 22
+      CidrIp: 0.0.0.0/0
 Outputs:
   AlpheratzVPC:
     Description: 'The primary VPC in Andromeda.'

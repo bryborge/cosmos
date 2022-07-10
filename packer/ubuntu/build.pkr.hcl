@@ -34,11 +34,12 @@ EOF
   }
 
   source "amazon-ebs.base-ubuntu-amd64" {
-    name            = "20.04.4"
-    ami_name        = "ubuntu-server-20.04.4"
-    ami_description = "Ubuntu Server 20.04.4 preloaded with Docker."
-    instance_type   = "t2.micro"
-    region          = "us-west-2"
+    name                        = "20.04.4"
+    ami_name                    = "ubuntu-server-20.04.4"
+    ami_description             = "Ubuntu Server 20.04.4 preloaded with Docker."
+    profile                     = "default"
+    instance_type               = "t2.micro"
+    region                      = "us-west-2"
   }
 
   provisioner "shell" {
