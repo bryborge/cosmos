@@ -11,6 +11,7 @@ source "amazon-ebs" "base-ubuntu-amd64" {
 
   user_data_file = "../cloud-init/user-data"
 
-  communicator = "ssh"
-  ssh_username = "ubuntu"
+  communicator            = "ssh"
+  ssh_username            = "ubuntu"
+  temporary_key_pair_type = "ed25519"
 }

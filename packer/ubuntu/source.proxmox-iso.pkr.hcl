@@ -12,6 +12,7 @@ source "proxmox" "base-ubuntu-amd64" {
 
   # General
   node       = "pve" # required
+  os         = "l26"
   qemu_agent = true
 
   # ISO
@@ -25,7 +26,7 @@ source "proxmox" "base-ubuntu-amd64" {
   # Hard Disk
   scsi_controller = "virtio-scsi-pci"
   disks {
-    disk_size         = "20G"
+    disk_size         = "8G"
     storage_pool      = "tank"
     storage_pool_type = "lvm"
     type              = "virtio"
