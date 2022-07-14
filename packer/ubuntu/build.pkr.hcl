@@ -81,7 +81,7 @@ EOF
     script = "scripts/update-dependencies.sh"
   }
 
-  provisioner "shell" {
-    script = "scripts/install-docker.sh"
+  provisioner "ansible" {
+    playbook_file = "../../ansible/install-docker.yml"
   }
 }
