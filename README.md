@@ -20,10 +20,11 @@ adhering to infrastructure-as-code principles where possible.
 
 ### Tools
 
-*   [Packer](https://www.packer.io/) - Identical machine images for multiple platforms from a single source 
-    configuration.
+*   [Ansible](https://www.ansible.com/) - Machine provisioning automation platform.
 *   [Cloud Init](https://cloudinit.readthedocs.io/en/latest/) - Industry standard multi-distribution method for
     cross-platform cloud instance initialization.
+*   [Packer](https://www.packer.io/) - Identical machine images for multiple platforms from a single source 
+    configuration.
 *   [Terraform](https://www.terraform.io/) - IaC tool for building, changing, and versioning infrastructure safely
     and efficiently.
 

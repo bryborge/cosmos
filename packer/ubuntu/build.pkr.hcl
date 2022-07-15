@@ -74,14 +74,14 @@ EOF
   # Provisioners
   #
   provisioner "shell" {
-    script = "scripts/setup-cloud-init.sh"
-  }
-
-  provisioner "shell" {
-    script = "scripts/update-dependencies.sh"
+    script = "provisioners/scripts/cleanup-cloud-init.sh"
   }
 
   provisioner "ansible" {
-    playbook_file = "../../ansible/install-docker.yml"
+    playbook_file = "provisioners/ansible/update-apt-packages.yml"
+  }
+
+  provisioner "ansible" {
+    playbook_file = "provisioners/ansible/install-docker.yml"
   }
 }
