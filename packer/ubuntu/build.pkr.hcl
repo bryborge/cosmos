@@ -82,6 +82,10 @@ EOF
   }
 
   provisioner "ansible" {
+    playbook_file = "provisioners/ansible/manage-users.yml"
+  }
+
+  provisioner "ansible" {
     playbook_file = "provisioners/ansible/install-docker.yml"
   }
 }

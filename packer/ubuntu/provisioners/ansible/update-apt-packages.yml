@@ -1,7 +1,7 @@
 ---
 - name: Update Aptitude Playbook
   hosts: all
-  become: true
+  become: yes
   tasks:
     - name: Update apt repository cache
       apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
