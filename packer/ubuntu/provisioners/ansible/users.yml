@@ -1,0 +1,11 @@
+---
+- name: Manage Users Playbook
+  hosts: all
+  become: yes
+  tasks:
+    - name: Lock/Disable default image-build user
+      ansible.builtin.user:
+        name: ubuntu
+        state: present
+        password_lock: yes
+        shell: "/sbin/nologin"

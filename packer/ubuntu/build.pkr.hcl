@@ -78,14 +78,14 @@ EOF
   }
 
   provisioner "ansible" {
-    playbook_file = "provisioners/ansible/update-apt-packages.yml"
+    playbook_file = "provisioners/ansible/apt.yml"
   }
 
   provisioner "ansible" {
-    playbook_file = "provisioners/ansible/manage-users.yml"
+    playbook_file = "provisioners/ansible/docker.yml"
   }
 
   provisioner "ansible" {
-    playbook_file = "provisioners/ansible/install-docker.yml"
+    playbook_file = "provisioners/ansible/users.yml"
   }
 }

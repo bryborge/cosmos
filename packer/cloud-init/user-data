@@ -24,7 +24,13 @@ autoinstall:
     users:
       - name: ubuntu
         groups: [adm, sudo]
-        hashed_passwd: $6$exDY1mhS4KUYCE/2$zmn9ToZwTKLhCw.b4/b.ZRTIZM30JZ4QrOQ2aOXJ8yk96xpcCof0kxKwuX1kqLG/ygbJ1f8wxED22bTL4F46P0
+        hashed_passwd: $6$exDY1mhS4KUYCE/2$zmn9ToZwTKLhCw.b4/b.ZRTIZM30JZ4QrOQ2aOXJ8yk96xpcCof0kxKwuX1kqLG/ygbJ1f8wxED22bTL4F46P0 # ubuntu
         lock_passwd: false
         sudo: ALL=(ALL) NOPASSWD:ALL
+        shell: /bin/bash
+      - name: xsob
+        groups: [sudo]
+        hashed_passwd: $1$asult$5Ot/kw1wnSjk5r9RMxbNE1
+        lock_passwd: false
+        sudo: ALL=(ALL) ALL
         shell: /bin/bash
