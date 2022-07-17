@@ -1,0 +1,27 @@
+---
+- name: Setup Dotfiles Playbook
+  hosts: all
+  become: yes
+  vars:
+    github_raw_url: https://raw.githubusercontent.com/sonofborge/dotfiles/main
+  tasks:
+    - name: bash_aliases
+      ansible.builtin.shell: "curl {{ github_raw_url }}/.bash_aliases > /home/xsob/.bash_aliases"
+
+    - name: bashrc
+      ansible.builtin.shell: "curl {{ github_raw_url }}/.bashrc > /home/xsob/.bashrc"
+
+    - name: gitcompletion
+      ansible.builtin.shell: "curl {{ github_raw_url }}/.gitcompletion > /home/xsob/.gitcompletion"
+
+    - name: gitconfig
+      ansible.builtin.shell: "curl {{ github_raw_url }}/.gitconfig > /home/xsob/.gitconfig"
+
+    - name: gitprompt
+      ansible.builtin.shell: "curl {{ github_raw_url }}/.gitprompt > /home/xsob/.gitprompt"
+
+    - name: vimrc
+      ansible.builtin.shell: "curl {{ github_raw_url }}/.vimrc > /home/xsob/.vimrc"
+
+    - name: vim theme (monokai)
+      ansible.builtin.shell: "mkdir -p /home/xsob/.vim/colors && curl {{ github_raw_url }}/.vim/colors/monokai.vim > /home/xsob/.vim/colors/monokai.vim"

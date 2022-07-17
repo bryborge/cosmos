@@ -86,6 +86,10 @@ EOF
   }
 
   provisioner "ansible" {
+    playbook_file = "provisioners/ansible/dotfiles.yml"
+  }
+
+  provisioner "ansible" {
     playbook_file = "provisioners/ansible/users.yml"
   }
 }
