@@ -20,9 +20,12 @@
           - apt-transport-https
           - ca-certificates
           - curl
+          - fd-find
           - gnupg
+          - jq
           - lsb-release
           - neofetch
+          - ripgrep
           - software-properties-common
           - python3-pip
           - python3-setuptools
