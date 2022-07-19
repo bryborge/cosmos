@@ -24,7 +24,7 @@ provider "proxmox" {
 #
 resource "proxmox_vm_qemu" "dockserv" {
   count = 1
-  name  = "dockserv-vm-${count.index + 1}"
+  name  = "dockserv-${count.index + 1}"
 
   target_node = var.proxmox_node
   clone       = var.vm_template_name
