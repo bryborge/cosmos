@@ -1,5 +1,20 @@
-locals {
-  proxmox_api_url          = "https://192.168.1.190:8006/api2/json"
-  proxmox_api_token_id     = "packer@pam!packer"
-  proxmox_api_token_secret = "41e3dedc-4215-4a2c-b568-9ba10a60ac36"
+variable "proxmox_api_url" {
+  type        = string
+  description = "The URL where Proxmox can be found."
+}
+
+variable "proxmox_api_packer_token_id" {
+  type        = string
+  description = "The Proxmox API token id for Packer."
+}
+
+variable "proxmox_api_packer_token_secret" {
+  type        = string
+  description = "The Proxmox API token secret for Packer."
+}
+
+variable "proxmox_node" {
+  type        = string
+  default     = "pve"
+  description = "The Proxmox Node on which to create the VM."
 }

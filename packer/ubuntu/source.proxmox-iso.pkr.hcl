@@ -5,13 +5,13 @@
 #
 source "proxmox" "base-ubuntu-amd64" {
   # Connection
-  proxmox_url              = local.proxmox_api_url          # required
-  username                 = local.proxmox_api_token_id     # required
-  token                    = local.proxmox_api_token_secret # required
+  proxmox_url              = var.proxmox_api_url                 # required
+  username                 = var.proxmox_api_packer_token_id     # required
+  token                    = var.proxmox_api_packer_token_secret # required
   insecure_skip_tls_verify = true
 
   # General
-  node       = "pve" # required
+  node       = var.proxmox_node # required
   os         = "l26"
   qemu_agent = true
 
