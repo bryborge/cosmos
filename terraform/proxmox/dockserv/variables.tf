@@ -1,3 +1,9 @@
+variable "primary_user_password" {
+  type = string
+  default = "password"
+  description = "The primary user's password in the dockserv environment."
+}
+
 variable "proxmox_api_url" {
   type        = string
   default     = "https://localhost:8006/api2/json"

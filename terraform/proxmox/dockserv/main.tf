@@ -1,17 +1,3 @@
-terraform {
-  required_version = "1.2.3"
-
-  required_providers {
-    proxmox = {
-      source  = "telmate/proxmox"
-      version = "2.9.10"
-    }
-  }
-}
-
-##
-# PROVIDERS
-#
 provider "proxmox" {
   pm_api_url          = var.proxmox_api_url
   pm_api_token_id     = var.proxmox_api_terraform_token_id
@@ -19,9 +5,6 @@ provider "proxmox" {
   pm_tls_insecure     = true
 }
 
-##
-# RESOURCES
-#
 resource "proxmox_vm_qemu" "dockserv" {
   count = 1
   name  = "dockserv-${count.index + 1}"
@@ -58,4 +41,18 @@ resource "proxmox_vm_qemu" "dockserv" {
   }
 
   ipconfig0 = "ip=192.168.1.9${count.index + 1}/24,gw=192.168.1.1"
+
+  connection {
+    type     = "ssh"
+    user     = "xsob"
+    password = var.primary_user_password
+    host     = "192.168.1.56"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "git clone https://github.com/sonofborge/dockserv.git /home/xsob/dockserv",
+      "echo '${var.primary_user_password}' | sudo -S mkdir /media/nas"
+    ]
+  }
 }
