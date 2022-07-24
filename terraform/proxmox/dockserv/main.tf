@@ -10,7 +10,7 @@ resource "proxmox_vm_qemu" "dockserv" {
   name  = "dockserv-${count.index + 1}"
 
   target_node = var.proxmox_node
-  clone       = "xsob-ubuntu-server-jammy-v1.0.3"
+  clone       = "xsob-ubuntu-server-jammy-v1.0.4"
 
   agent    = 1
   bootdisk = "scsi0"
@@ -23,7 +23,7 @@ resource "proxmox_vm_qemu" "dockserv" {
 
   disk {
     slot     = 0
-    size     = "100G"
+    size     = "250G"
     type     = "scsi"
     storage  = "tank"
     iothread = 1
@@ -46,13 +46,19 @@ resource "proxmox_vm_qemu" "dockserv" {
     type     = "ssh"
     user     = "xsob"
     password = var.primary_user_password
-    host     = "192.168.1.56"
+    host     = "192.168.1.71"
   }
 
   provisioner "remote-exec" {
     inline = [
       "git clone https://github.com/sonofborge/dockserv.git /home/xsob/dockserv",
-      "echo '${var.primary_user_password}' | sudo -S mkdir /media/nas"
+      "cd ~/dockserv",
+      "git checkout main",
+      "cd ~",
+      "echo '${var.primary_user_password}' | sudo -S mkdir /media/nas",
+      # copy line into /etc/fstab # 192.168.1.<XXX>:</path/to/share_name> /media/nas/<share_name> nfs auto,defaults,nofail 0 0
+      # mkdir -p /media/nas/<share_name>
+      # mount -a
     ]
   }
 }

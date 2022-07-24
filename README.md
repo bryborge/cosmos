@@ -27,7 +27,8 @@ adhering to infrastructure-as-code principles where possible.
     configuration.
 *   [Terraform](https://www.terraform.io/) - IaC tool for building, changing, and versioning infrastructure safely
     and efficiently.
-
+*   [pass](https://www.passwordstore.org/) - CLi Password Manager.
+    *   [How to configure](https://www.howtogeek.com/devops/how-to-use-pass-a-command-line-password-manager-for-linux-systems/)
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.

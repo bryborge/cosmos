@@ -25,6 +25,7 @@
           - jq
           - lsb-release
           - neofetch
+          - nfs-common
           - ripgrep
           - software-properties-common
           - python3-pip
