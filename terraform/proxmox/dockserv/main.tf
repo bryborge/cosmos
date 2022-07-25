@@ -22,11 +22,13 @@ resource "proxmox_vm_qemu" "dockserv" {
   sockets  = 1
 
   disk {
-    slot     = 0
-    size     = "100G"
-    type     = "scsi"
-    storage  = "tank"
-    iothread = 1
+    # slot         = 0
+    id           = 0
+    iothread     = 1
+    size         = "250G"
+    storage      = "tank"
+    storage_type = "lvm"
+    type         = "scsi"
   }
 
   network {
@@ -35,9 +37,7 @@ resource "proxmox_vm_qemu" "dockserv" {
   }
 
   lifecycle {
-    ignore_changes = [
-      network,
-    ]
+    ignore_changes = [network]
   }
 
   ipconfig0 = "ip=192.168.1.9${count.index + 1}/24,gw=192.168.1.1"
@@ -46,19 +46,20 @@ resource "proxmox_vm_qemu" "dockserv" {
     type     = "ssh"
     user     = "xsob"
     password = var.primary_user_password
-    host     = "192.168.1.71"
+    host     = self.public_ip
   }
 
   provisioner "remote-exec" {
+    # TODO: Break these out into provisioner scripts
     inline = [
-      "git clone https://github.com/sonofborge/dockserv.git /home/xsob/dockserv",
-      "cd ~/dockserv",
-      "git checkout main",
-      "cd ~",
-      "echo '${var.primary_user_password}' | sudo -S mkdir /media/nas",
-      # copy line into /etc/fstab # 192.168.1.<XXX>:</path/to/share_name> /media/nas/<share_name> nfs auto,defaults,nofail 0 0
-      # mkdir -p /media/nas/<share_name>
-      # mount -a
+      # 1. clone the dockserv project
+      "git clone https://github.com/sonofborge/dockserv.git /home/xsob/dockserv && cd $_ && git checkout main",
+      # 2. create nas media mount point
+      "echo '${var.primary_user_password}' | sudo -S mkdir -p /media/nas",
+      "echo '${var.nas_ip}:<PATH/TO/SHARE> /media/nas nfs auto,defaults,nofail 0 0' > /etc/fstab", # FIXME
+      "mount -a",
+      # 3. set hostname
+      "sudo hostnamectl set-hostname dockserv-${count.index + 1}"
     ]
   }
 }

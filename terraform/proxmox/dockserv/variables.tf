@@ -1,6 +1,6 @@
 variable "primary_user_password" {
-  type = string
-  default = "password"
+  type        = string
+  default     = "password"
   description = "The primary user's password in the dockserv environment."
 }
 
