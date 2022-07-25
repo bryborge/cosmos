@@ -23,7 +23,7 @@ resource "proxmox_vm_qemu" "dockserv" {
 
   disk {
     slot     = 0
-    size     = "250G"
+    size     = "100G"
     type     = "scsi"
     storage  = "tank"
     iothread = 1
