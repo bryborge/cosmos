@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: The primary VPC in Andromeda.
+Description: The Development VPC.
 # Metadata:
 #   Instances:
 #     Description:
@@ -27,7 +27,7 @@ Parameters:
 # Conditions:
 # Transform:
 Resources:
-  AlpheratzVPC:
+  DevelopmentVPC:
     Type: AWS::EC2::VPC
     Properties:
       CidrBlock: !Ref CidrBlock
@@ -37,106 +37,106 @@ Resources:
       Tags:
         - Key: Name
           Value: !Ref Name
-  AlpheratzPublicSubnet1:
+  DevelopmentPublicSubnet1:
     Type: AWS::EC2::Subnet
     Properties:
       CidrBlock: !Ref 'PublicSubnet1CidrBlock'
       AvailabilityZone: !Join ['', [!Ref 'AWS::Region', 'a']]
       MapPublicIpOnLaunch: true
-      VpcId: !Ref 'AlpheratzVPC'
+      VpcId: !Ref 'DevelopmentVPC'
       Tags:
         - Key: Name
           Value: !Sub ${Name} Public 1
         - Key: Group
           Value: !Ref Name
-  AlpheratzPrivateSubnet1:
+  DevelopmentPrivateSubnet1:
     Type: AWS::EC2::Subnet
     Properties:
       CidrBlock: !Ref 'PrivateSubnet1CidrBlock'
       AvailabilityZone: !Join ['', [!Ref 'AWS::Region', 'a']]
-      VpcId: !Ref 'AlpheratzVPC'
+      VpcId: !Ref 'DevelopmentVPC'
       Tags:
         - Key: Name
           Value: !Sub ${Name} Private 1
         - Key: Group
           Value: !Ref Name
-  AlpheratzIGW:
+  DevelopmentIGW:
     Type: AWS::EC2::InternetGateway
-    DependsOn: AlpheratzVPC
+    DependsOn: DevelopmentVPC
     Properties:
       Tags:
         - Key: Name
           Value: !Sub ${Name} Internet Gateway
         - Key: Group
           Value: !Ref Name
-  AlpheratzIGWAttachment:
+  DevelopmentIGWAttachment:
     Type: AWS::EC2::VPCGatewayAttachment
     Properties:
-      VpcId: !Ref AlpheratzVPC
-      InternetGatewayId: !Ref AlpheratzIGW
-  AlpheratzPublicRoutes:
+      VpcId: !Ref DevelopmentVPC
+      InternetGatewayId: !Ref DevelopmentIGW
+  DevelopmentPublicRoutes:
     Type: AWS::EC2::RouteTable
     Properties:
-      VpcId: !Ref 'AlpheratzVPC'
+      VpcId: !Ref 'DevelopmentVPC'
       Tags:
         - Key: Name
-          Value: Alpheratz Public Routes
+          Value: Development Public Routes
         - Key: Group
-          Value: Alpheratz
-  AlpheratzPublicSubnet1Routes:
+          Value: Development
+  DevelopmentPublicSubnet1Routes:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
-      RouteTableId: !Ref 'AlpheratzPublicRoutes'
-      SubnetId: !Ref 'AlpheratzPublicSubnet1'
-  AlpheratzPublicDefaultRoute:
+      RouteTableId: !Ref 'DevelopmentPublicRoutes'
+      SubnetId: !Ref 'DevelopmentPublicSubnet1'
+  DevelopmentPublicDefaultRoute:
     Type: AWS::EC2::Route
     Properties:
       DestinationCidrBlock: 0.0.0.0/0
-      RouteTableId: !Ref 'AlpheratzPublicRoutes'
-      GatewayId: !Ref 'AlpheratzIGW'
-    DependsOn: AlpheratzIGWAttachment
-  AlpheratzSG:
+      RouteTableId: !Ref 'DevelopmentPublicRoutes'
+      GatewayId: !Ref 'DevelopmentIGW'
+    DependsOn: DevelopmentIGWAttachment
+  DevelopmentSG:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: Alpheratz Hosts
-      VpcId: !Ref 'AlpheratzVPC'
+      GroupDescription: Development Hosts
+      VpcId: !Ref 'DevelopmentVPC'
       Tags:
         - Key: Group
-          Value: Alpheratz
+          Value: Development
         - Key: Name
-          Value: Alpheratz Host Security Group
-  AlpheratzSGIngressAllowSSH:
+          Value: Development Host Security Group
+  DevelopmentSGIngressAllowSSH:
     Type: AWS::EC2::SecurityGroupIngress
     Properties:
-      GroupId: !Ref 'AlpheratzSG'
+      GroupId: !Ref 'DevelopmentSG'
       IpProtocol: tcp
       FromPort: 22
       ToPort: 22
       CidrIp: 0.0.0.0/0
 Outputs:
-  AlpheratzVPC:
-    Description: 'The primary VPC in Andromeda.'
-    Value: !Ref AlpheratzVPC
+  DevelopmentVPC:
+    Description: 'The Development VPC.'
+    Value: !Ref DevelopmentVPC
     Export:
       Name: PrimaryVPC
   VpcId:
-    Description: Resource ID for the Alpheratz VPC.
-    Value: !Ref AlpheratzVPC
+    Description: Resource ID for the Development VPC.
+    Value: !Ref DevelopmentVPC
     Export:
-      Name: Alpheratz-vpc-id
+      Name: Development-vpc-id
   VpcCidrBlock:
-    Description: CIDR address range for the AlpheratzVPC.
-    Value: !GetAtt AlpheratzVPC.CidrBlock
-  AlpheratzPublicSubnet1:
+    Description: CIDR address range for the DevelopmentVPC.
+    Value: !GetAtt DevelopmentVPC.CidrBlock
+  DevelopmentPublicSubnet1:
     Description: 'public-tier subnet 1'
-    Value: !Ref AlpheratzPublicSubnet1
+    Value: !Ref DevelopmentPublicSubnet1
     Export:
       Name: PublicSubnet1
-  AlpheratzPrivateSubnet1:
+  DevelopmentPrivateSubnet1:
     Description: 'private-tier subnet 1'
-    Value: !Ref AlpheratzPrivateSubnet1
+    Value: !Ref DevelopmentPrivateSubnet1
     Export:
       Name: PrivateSubnet1
   InternetGatewayId:
-    Description: Resource ID for AlpheratzVPC's Internet Gateway.
-    Value: !Ref AlpheratzIGW
+    Description: Resource ID for DevelopmentVPC's Internet Gateway.
+    Value: !Ref DevelopmentIGW

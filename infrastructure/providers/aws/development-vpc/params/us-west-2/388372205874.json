@@ -1,7 +1,7 @@
 [
   {
     "ParameterKey": "Name",
-    "ParameterValue": "Alpheratz-VPC"
+    "ParameterValue": "Development-VPC"
   },
   {
     "ParameterKey": "CidrBlock",

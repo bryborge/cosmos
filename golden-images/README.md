@@ -1,42 +1,43 @@
-# Packer-generated Base Images
+# Golden Images
 
 ## Versioning
 
-Base images in this project use Semantic Versioning ([SemVer](https://semver.org/)). Versions are defined in a file
+Golden images in this project use Semantic Versioning ([SemVer](https://semver.org/)). Versions are defined in a file
 called `versions.pkrvars.hcl` located at each OS distro's base directory.
 
-## Example Commands
+## Useful Commands
 
-*   Validate all Ubuntu Proxmox builds.
+*   Validate all Ubuntu builds.
 
     ```sh
-    cd packer/ubuntu && \
+    cd distros/ubuntu && \
     packer validate \
-      -var-file="versions.pkrvars.hcl" \
-      -var-file="../../secrets/proxmox/common/secrets.json" \
-      -var-file="../../secrets/proxmox/packer/secrets.json" .
+      -var-file="versions.pkrvars.hcl" .
     ```
 
 *   Validate an Ubuntu 22.04 Proxmox build.
 
     ```sh
-    cd packer/ubuntu && \
+    cd distros/ubuntu && \
     packer validate \
       -only=ubuntu.proxmox.22.04 \
-      -var-file="versions.pkrvars.hcl" \
-      -var-file="../../secrets/proxmox/common/secrets.json" \
-      -var-file="../../secrets/proxmox/packer/secrets.json" .
+      -var-file="versions.pkrvars.hcl" .
     ```
 
-*   Build an Ubuntu 22.04 Proxmox build.
+*   Build an Ubuntu 22.04 AWS golden image.
 
     ```sh
-    cd packer/ubuntu && \
-    packer validate \
-      -only=ubuntu.proxmox.22.04 \
-      -var-file="versions.pkrvars.hcl" \
-      -var-file="../../secrets/proxmox/common/secrets.json" \
-      -var-file="../../secrets/proxmox/packer/secrets.json" .
+    cd distros/ubuntu && \
+    packer build \
+      -only=ubuntu.amazon-ebs.22.04 \
+      -var-file="versions.pkrvars.hcl" .
+    ```
+
+*   Query for a specific AMI's information
+
+    ```sh
+    aws ssm get-parameters --names \
+      /aws/service/canonical/ubuntu/server/22.04/stable/current/amd64/hvm/ebs-gp2/ami-id
     ```
 
 ## References
