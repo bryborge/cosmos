@@ -14,4 +14,10 @@ source "amazon-ebs" "base-ubuntu-amd64" {
   communicator            = "ssh"
   ssh_username            = local.session_user
   temporary_key_pair_type = "ed25519"
+
+  tags = {
+    Operating_System  = "Ubuntu"
+    Source_AMI_ID     = "{{ .SourceAMI }}"
+    Source_AMI_Name   = "{{ .SourceAMIName }}"
+  }
 }
