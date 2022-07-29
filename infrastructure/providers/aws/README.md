@@ -9,8 +9,8 @@ Infrastructure as Code for the various resources provided on Amazon Web Services
     ```sh
     aws cloudformation create-stack \
       --stack-name 'development-vpc' \
-      --template-body file://aws/development-vpc/stack.yml \
-      --parameters file://aws/development-vpc/params/us-west-2/388372205874.json
+      --template-body file://aws/cloudformation/development-vpc/stack.yml \
+      --parameters file://aws/cloudformation/development-vpc/params/us-west-2/388372205874.json
     ```
 
 *   Describe VPC stack

@@ -28,9 +28,3 @@ autoinstall:
         lock_passwd: false
         sudo: ALL=(ALL) NOPASSWD:ALL
         shell: /bin/bash
-      - name: xsob
-        groups: [sudo]
-        hashed_passwd: $1$asult$5Ot/kw1wnSjk5r9RMxbNE1
-        lock_passwd: false
-        sudo: ALL=(ALL) ALL
-        shell: /bin/bash

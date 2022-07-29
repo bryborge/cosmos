@@ -78,6 +78,11 @@ EOF
   }
 
   provisioner "ansible" {
+    playbook_file   = "provisioners/ansible/users.yml"
+    extra_arguments = ["--extra-vars", "primary_user_password=${var.primary_user_password}"]
+  }
+
+  provisioner "ansible" {
     playbook_file = "provisioners/ansible/apt.yml"
   }
 
@@ -87,9 +92,5 @@ EOF
 
   provisioner "ansible" {
     playbook_file = "provisioners/ansible/dotfiles.yml"
-  }
-
-  provisioner "ansible" {
-    playbook_file = "provisioners/ansible/users.yml"
   }
 }
