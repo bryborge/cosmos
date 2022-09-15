@@ -30,4 +30,3 @@ Infrastructure as Code for the various resources provided on Amazon Web Services
 *   [Official AWS Documentation](https://docs.aws.amazon.com/index.html)
 *   [Official AWS CloudFormation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
 *   [Ubuntu Amazon EC2 Docs](https://ubuntu.com/server/docs/cloud-images/amazon-ec2)
-
