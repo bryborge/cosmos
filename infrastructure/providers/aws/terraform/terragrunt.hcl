@@ -1,6 +1,5 @@
 locals {
-  // account_id  = get_env("ACCOUNT_ID", get_aws_account_id())
-  account_id  = "388372205874"
+  account_id  = get_env("ACCOUNT_ID", get_aws_account_id())
   environment = get_env("ENVIRONMENT")
   region      = get_env("AWS_REGION")
 
@@ -23,4 +22,12 @@ remote_state {
     encrypt        = true
     dynamodb_table = local.dynamodb_table
   }
+}
+
+inputs = {
+  environment                = local.environment
+  aws_region                 = local.region
+  aws_account_id             = local.account_id
+  environment_bucket         = local.bucket_name
+  environment_dynamodb_table = local.dynamodb_table
 }

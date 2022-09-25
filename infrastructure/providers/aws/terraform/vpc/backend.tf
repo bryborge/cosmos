@@ -4,7 +4,7 @@ terraform {
     bucket         = "terraform-development-us-west-2-388372205874"
     dynamodb_table = "terraform-lock-development"
     encrypt        = true
-    key            = "cosmos/env/dev/00-vpc/388372205874/us-west-2/terraform.tfstate"
+    key            = "cosmos/vpc/388372205874/us-west-2/terraform.tfstate"
     region         = "us-west-2"
   }
 }
