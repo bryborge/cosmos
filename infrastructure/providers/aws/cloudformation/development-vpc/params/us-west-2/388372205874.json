@@ -1,7 +1,7 @@
 [
   {
     "ParameterKey": "Name",
-    "ParameterValue": "Development-VPC"
+    "ParameterValue": "development-vpc"
   },
   {
     "ParameterKey": "CidrBlock",
@@ -12,7 +12,15 @@
     "ParameterValue": "10.42.1.0/24"
   },
   {
-    "ParameterKey": "PrivateSubnet1CidrBlock",
+    "ParameterKey": "PublicSubnet2CidrBlock",
     "ParameterValue": "10.42.11.0/24"
+  },
+  {
+    "ParameterKey": "PrivateSubnet1CidrBlock",
+    "ParameterValue": "10.42.21.0/24"
+  },
+  {
+    "ParameterKey": "PrivateSubnet2CidrBlock",
+    "ParameterValue": "10.42.31.0/24"
   }
 ]
