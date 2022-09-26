@@ -1,8 +1,48 @@
-# Cosmos
+<div align="center">
+  <br />
+  <img src="assets/imgs/logo.png" alt="The Cosmos project logo depicting an astronaut" width="190" height="226" />
+  <br />
+  <h1 align="center">Cosmos</h1>
+  <p align="center">
+    <i>"If you wish to make an apple pie from scratch, you must first invent the universe."</i> -- Carl Sagan
+    <br />
+    <br />
+    <a href="https://github.com/sonofborge/cosmos/README.md"><strong>Explore the docs »</strong></a>
+  </p>
+  <br />
+</div>
 
-> "If you wish to make an apple pie from scratch, you must first invent the universe."
-> 
-> -- Carl Sagan
+## Table of Contents
+
+<details>
+  <summary>Show/Hide</summary>
+  <ol>
+    <li>
+      <a href="#-about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#-definitions">Definitions</a></li>
+      </ul>
+      <ul>
+        <li>
+          <a href="#-structure">Structure</a>
+          <ul>
+            <li><a href="#golden-images">Golden Images</a></li>
+            <li><a href="#infrastructure">Infrastructure</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#-tooling">Tooling</a>
+    </li>
+    <li>
+      <a href="#-license">License</a>
+    </li>
+    <li>
+      <a href="#-further-reading">Further Reading</a>
+    </li>
+  </ol>
+</details>
 
 ## 🚀 About the Project
 
