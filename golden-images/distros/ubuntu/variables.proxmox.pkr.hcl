@@ -15,6 +15,6 @@ variable "proxmox_api_packer_token_secret" {
 
 variable "proxmox_node" {
   type        = string
-  default     = "pve"
+  default     = "c137"
   description = "The Proxmox Node on which to create the VM."
 }
