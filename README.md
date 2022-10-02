@@ -22,14 +22,12 @@
       <ul>
         <li><a href="#-definitions">Definitions</a></li>
       </ul>
+    </li>
+    <li>
+      <a href="#-structure">Structure</a>
       <ul>
-        <li>
-          <a href="#-structure">Structure</a>
-          <ul>
-            <li><a href="#golden-images">Golden Images</a></li>
-            <li><a href="#infrastructure">Infrastructure</a></li>
-          </ul>
-        </li>
+        <li><a href="#golden-images">Golden Images</a></li>
+        <li><a href="#infrastructure">Infrastructure</a></li>
       </ul>
     </li>
     <li>
@@ -76,18 +74,18 @@ adhering to infrastructure-as-code principles where possible.
     >
     > -- Red Hat ([Source article](https://www.redhat.com/en/topics/automation/what-is-infrastructure-as-code-iac))
 
-### 🧬 Structure
+## 🧬 Structure
 
 This project is split out into two primary sections -- "golden image" definitions and infrastructure (iac).
 
-#### Golden Images
+### Golden Images
 
 ```sh
 📁 golden-images     # base image templates defined as code
 ├── 📁 cloud-init    # cross-platform cloud instance initialization definition
 └── 📁 distros       # version- and platform- specific build definitions by distro (e.g. ubuntu, centos)
 ```
-#### Infrastructure
+### Infrastructure
 
 ```sh
 📁 infrastructure    # infrastructure defined as code
