@@ -10,15 +10,12 @@ called `versions.pkrvars.hcl` located at each OS distro's base directory.
 *   Validate all Ubuntu builds.
 
     ```sh
-    cd distros/ubuntu && \
-    packer validate \
-      -var-file="versions.pkrvars.hcl" .
+    packer validate -var-file="versions.pkrvars.hcl" .
     ```
 
 *   Validate an Ubuntu 22.04 Proxmox build.
 
     ```sh
-    cd distros/ubuntu && \
     packer validate \
       -only=ubuntu.proxmox.22.04 \
       -var-file="versions.pkrvars.hcl" .
@@ -27,7 +24,6 @@ called `versions.pkrvars.hcl` located at each OS distro's base directory.
 *   Build an Ubuntu 22.04 AWS golden image.
 
     ```sh
-    cd distros/ubuntu && \
     packer build \
       -only=ubuntu.amazon-ebs.22.04 \
       -var-file="versions.pkrvars.hcl" .

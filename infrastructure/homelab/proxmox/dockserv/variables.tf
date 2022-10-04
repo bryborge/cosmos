@@ -1,3 +1,9 @@
+variable "nas_ip" {
+  type        = string
+  default     = "0.0.0.0"
+  description = "The IP address of the NAS server."
+}
+
 variable "primary_user_password" {
   type        = string
   default     = "password"
@@ -25,6 +31,6 @@ variable "proxmox_api_terraform_token_secret" {
 
 variable "proxmox_node" {
   type        = string
-  default     = "pve"
+  default     = "c137"
   description = "The proxmox node on which to create the VM."
 }

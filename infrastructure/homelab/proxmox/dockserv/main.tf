@@ -10,7 +10,7 @@ resource "proxmox_vm_qemu" "dockserv" {
   name  = "dockserv-${count.index + 1}"
 
   target_node = var.proxmox_node
-  clone       = "xsob-ubuntu-server-jammy-v1.0.4"
+  clone       = "xsob-ubuntu-server-jammy-v1.0.5"
 
   agent    = 1
   bootdisk = "scsi0"
@@ -22,12 +22,9 @@ resource "proxmox_vm_qemu" "dockserv" {
   sockets  = 1
 
   disk {
-    # slot         = 0
-    id           = 0
     iothread     = 1
     size         = "250G"
     storage      = "tank"
-    storage_type = "lvm"
     type         = "scsi"
   }
 
@@ -46,7 +43,8 @@ resource "proxmox_vm_qemu" "dockserv" {
     type     = "ssh"
     user     = "xsob"
     password = var.primary_user_password
-    host     = self.public_ip
+    host     = "192.168.1.91"
+    port     = "22"
   }
 
   provisioner "remote-exec" {
@@ -59,7 +57,7 @@ resource "proxmox_vm_qemu" "dockserv" {
       "echo '${var.nas_ip}:<PATH/TO/SHARE> /media/nas nfs auto,defaults,nofail 0 0' > /etc/fstab", # FIXME
       "mount -a",
       # 3. set hostname
-      "sudo hostnamectl set-hostname dockserv-${count.index + 1}"
+      "sudo hostnamectl set-hostname dockserv-${count.index + 1}",
     ]
   }
 }
