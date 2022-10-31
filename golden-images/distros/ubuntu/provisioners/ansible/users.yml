@@ -16,12 +16,14 @@
         line: '%wheel ALL=(ALL) NOPASSWD: ALL'
         validate: 'visudo -cf %s'
 
-    - name: Create primary 'xsob' user
+    - name: Create primary user
       ansible.builtin.user:
         name: xsob
-        password: "{{primary_user_password}}"
+        password: "{{ primary_user_password }}"
         home: /home/xsob
         state: present
+        shell: /bin/bash
+        update_password: on_create
 
     - name: Add sudoers users to wheel group
       user:
