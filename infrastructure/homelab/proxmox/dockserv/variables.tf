@@ -4,7 +4,7 @@ variable "nas_ip" {
   description = "The IP address of the NAS server."
 }
 
-variable "primary_user_password" {
+variable "user_password" {
   type        = string
   default     = "password"
   description = "The primary user's password in the dockserv environment."

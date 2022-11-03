@@ -42,7 +42,7 @@ resource "proxmox_vm_qemu" "dockserv" {
   connection {
     type     = "ssh"
     user     = "xsob"
-    password = var.primary_user_password
+    password = var.user_password
     host     = "192.168.1.91"
     port     = "22"
   }
@@ -53,7 +53,7 @@ resource "proxmox_vm_qemu" "dockserv" {
       # 1. clone the dockserv project
       "git clone https://github.com/sonofborge/dockserv.git /home/xsob/dockserv && cd $_ && git checkout main",
       # 2. create nas media mount point
-      "echo '${var.primary_user_password}' | sudo -S mkdir -p /media/nas",
+      "echo '${var.user_password}' | sudo -S mkdir -p /media/nas",
       "echo '${var.nas_ip}:<PATH/TO/SHARE> /media/nas nfs auto,defaults,nofail 0 0' > /etc/fstab", # FIXME
       "mount -a",
       # 3. set hostname

@@ -1,9 +1,14 @@
 locals {
-  session_user          = "ubuntu"
-  session_user_password = "ubuntu"
+  session_user          = "ephemeral"
+  session_user_password = "password"
 }
 
-variable "primary_user_password" {
+variable "user_password" {
   type        = string
   description = "the primary user password"
+}
+
+variable "user_salt" {
+  type        = string
+  description = "the primary user password salt"
 }

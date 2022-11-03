@@ -79,7 +79,7 @@ EOF
 
   provisioner "ansible" {
     playbook_file   = "provisioners/ansible/users.yml"
-    extra_arguments = ["--extra-vars", "primary_user_password=${var.primary_user_password}"]
+    extra_arguments = ["--extra-vars", "user_password=${var.user_password} user_salt=${var.user_salt}"]
   }
 
   provisioner "ansible" {
