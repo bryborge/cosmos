@@ -1,6 +1,6 @@
 locals {
-  session_user          = "ephemeral"
-  session_user_password = "password"
+  session_user          = "packer"
+  session_user_password = "packer"
 }
 
 variable "user_password" {

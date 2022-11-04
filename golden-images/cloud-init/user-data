@@ -23,8 +23,8 @@ autoinstall:
     package_upgrade: false
     timezone: America/Los_Angeles
     users:
-      - name: ephemeral
-        hashed_passwd: $6$gEpu2zgYb.bdEl0t$xzrkWBpsw6z2k//FBtiIOF1C4bxAgBiCRLGa31JbkujDo2Vq45n1fG9Lzb3hV.sK4kJalSDz.ZnEWuFYnoFtu. # password
+      - name: packer
+        hashed_passwd: $6$salty$GZrSUq7tRRH.L9NxKZbKfklgzZ4M6yvPrIODjdw7.M3bJYUK3NnFK.H.Z7x42Z17DB8fQZKKvXF1C8McNjYHu/ # packer
         lock_passwd: false
         groups: [adm, sudo]
         shell: /bin/bash
