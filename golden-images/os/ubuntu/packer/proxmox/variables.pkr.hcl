@@ -1,3 +1,8 @@
+locals {
+  session_user          = "ubuntu"
+  session_user_password = "ubuntu"
+}
+
 variable "proxmox_api_url" {
   type        = string
   description = "The URL where Proxmox can be found."
@@ -13,8 +18,12 @@ variable "proxmox_api_packer_token_secret" {
   description = "The Proxmox API token secret for Packer."
 }
 
-variable "proxmox_node" {
+variable "user_password" {
   type        = string
-  default     = "c137"
-  description = "The Proxmox Node on which to create the VM."
+  description = "The primary user password"
+}
+
+variable "user_salt" {
+  type        = string
+  description = "The primary user password salt"
 }

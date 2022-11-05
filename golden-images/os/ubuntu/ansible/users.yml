@@ -24,7 +24,6 @@
         password: "{{ user_password | password_hash('sha512', user_salt) }}"
         state: present
         shell: /bin/bash
-        update_password: on_create
 
     - name: Add sudoers users to wheel group
       user:
@@ -34,9 +33,9 @@
         state: present
         createhome: yes
 
-    - name: Lock/Disable default image-build user
+    - name: Lock/Disable ubuntu user
       ansible.builtin.user:
-        name: packer
+        name: ubuntu
         state: present
         password_lock: yes
         shell: "/sbin/nologin"
