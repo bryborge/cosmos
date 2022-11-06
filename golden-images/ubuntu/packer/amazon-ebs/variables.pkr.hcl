@@ -4,6 +4,18 @@ locals {
   subnet_id             = "subnet-0fd57f105c180dc38" # Development-VPC Public 1
 }
 
+variable "image_version" {
+  type        = string
+  default     = "x.x.x"
+  description = "The version of the image to create."
+}
+
+variable "distro_short_name" {
+  type        = string
+  default     = "jammy"
+  description = "The Ubuntu Linux distribution (short) code name."
+}
+
 variable "instance_type" {
   type    = string
   default = "t2.micro"

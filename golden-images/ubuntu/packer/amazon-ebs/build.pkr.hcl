@@ -1,8 +1,3 @@
-variable "image_version" {
-  type    = string
-  default = "x.x.x"
-}
-
 build {
   name        = "ubuntu"
   description = <<EOF
@@ -34,23 +29,24 @@ EOF
   }
 
   provisioner "shell" {
-    script = "../../scripts/cleanup-cloud-init.sh"
+    script = "../../provisioners/shell/cleanup-cloud-init.sh"
   }
 
   provisioner "ansible" {
-    playbook_file   = "../../ansible/users.yml"
+    playbook_file   = "../../provisioners/ansible/users.yml"
     extra_arguments = ["--extra-vars", "user_password=${var.user_password} user_salt=${var.user_salt}"]
   }
 
   provisioner "ansible" {
-    playbook_file = "../../ansible/apt.yml"
+    playbook_file = "../../provisioners/ansible/apt.yml"
   }
 
   provisioner "ansible" {
-    playbook_file = "../../ansible/docker.yml"
+    playbook_file   = "../../provisioners/ansible/docker.yml"
+    extra_arguments = ["--extra-vars", "distro_short_name=${var.distro_short_name}"]
   }
 
   provisioner "ansible" {
-    playbook_file = "../../ansible/dotfiles.yml"
+    playbook_file = "../../provisioners/ansible/dotfiles.yml"
   }
 }

@@ -15,7 +15,7 @@
 
     - name: Add Docker repository
       apt_repository:
-        repo: deb https://download.docker.com/linux/ubuntu jammy stable
+        repo: "deb https://download.docker.com/linux/ubuntu {{ distro_short_name }} stable"
         state: present
 
     - name: Update apt repository cache

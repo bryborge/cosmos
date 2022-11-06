@@ -29,6 +29,15 @@ called `versions.pkrvars.hcl` located at each OS distro's base directory.
       -var-file="versions.pkrvars.hcl" .
     ```
 
+*   Build an Ubuntu 20.04 Proxmox golden image.
+
+    ```sh
+    packer validate \
+      -only=ubuntu.proxmox.20.04 \
+      -var "distro_short_name=focal" \
+      -var-file="versions.pkrvars.hcl" .
+    ```
+
 *   Query for a specific AMI's information
 
     ```sh
