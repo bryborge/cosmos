@@ -81,9 +81,12 @@ This project is split out into two primary sections -- "golden image" definition
 ### Golden Images
 
 ```sh
-📁 golden-images     # base image templates defined as code
-├── 📁 cloud-init    # cross-platform cloud instance initialization definition
-└── 📁 distros       # version- and platform- specific build definitions by distro (e.g. ubuntu, centos)
+📁 golden-images        # base image templates defined as code, organized by os/distro
+├── 📁 ...
+└── 📁 ubuntu
+    ├── 📁 cloud-init   # config for cloud-init
+    ├── 📁 packer       # Packer code, organized by plugin/provider
+    └── 📁 provisioners # Ansible and shell code
 ```
 ### Infrastructure
 
