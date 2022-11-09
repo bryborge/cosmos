@@ -2,6 +2,8 @@
 - name: Manage Users Playbook
   hosts: all
   become: yes
+  vars:
+    user_name: xsob
   tasks:
     - name: Make sure we have a 'wheel' group
       group:
@@ -16,24 +18,24 @@
         line: '%wheel ALL=(ALL) NOPASSWD: ALL'
         validate: 'visudo -cf %s'
 
-    - name: Create xsob user
+    - name: Create "{{ user_name }}" user
       ansible.builtin.user:
-        name: xsob
+        name: "{{ user_name }}"
         password: "{{ user_password | password_hash('sha512', user_salt) }}"
         state: present
-        update_password: on_create
+        shell: /bin/bash
 
     - name: Add sudoers users to wheel group
       user:
-        name: xsob
+        name: "{{ user_name }}"
         groups: wheel
         append: yes
         state: present
         createhome: yes
 
-    - name: Lock/Disable default image-build user
+    - name: Lock/Disable ubuntu user
       ansible.builtin.user:
-        name: ephemeral
+        name: ubuntu
         state: present
         password_lock: yes
         shell: "/sbin/nologin"

@@ -1,8 +1,7 @@
-##
 # Proxmox
 # ---
 # Docs: https://www.packer.io/plugins/builders/proxmox/iso
-#
+
 source "proxmox" "base-ubuntu-amd64" {
   # Connection
   proxmox_url              = var.proxmox_api_url                 # required
@@ -11,7 +10,7 @@ source "proxmox" "base-ubuntu-amd64" {
   insecure_skip_tls_verify = true
 
   # General
-  node       = var.proxmox_node # required
+  node       = "c137" # required
   os         = "l26"
   qemu_agent = true
 

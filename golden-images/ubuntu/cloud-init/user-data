@@ -23,8 +23,8 @@ autoinstall:
     package_upgrade: false
     timezone: America/Los_Angeles
     users:
-      - name: ephemeral
-        hashed_passwd: $6$gEpu2zgYb.bdEl0t$xzrkWBpsw6z2k//FBtiIOF1C4bxAgBiCRLGa31JbkujDo2Vq45n1fG9Lzb3hV.sK4kJalSDz.ZnEWuFYnoFtu. # password
+      - name: ubuntu
+        hashed_passwd: $6$exDY1mhS4KUYCE/2$zmn9ToZwTKLhCw.b4/b.ZRTIZM30JZ4QrOQ2aOXJ8yk96xpcCof0kxKwuX1kqLG/ygbJ1f8wxED22bTL4F46P0 # ubuntu
         lock_passwd: false
         groups: [adm, sudo]
         shell: /bin/bash
