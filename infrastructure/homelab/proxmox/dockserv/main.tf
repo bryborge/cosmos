@@ -47,3 +47,16 @@ resource "proxmox_vm_qemu" "dockserv" {
     port     = "22"
   }
 }
+
+resource "null_resource" "set_hostname" {
+  connection {
+    type     = "ssh"
+    user     = "xsob"
+    password = var.user_password
+    host     = "192.168.1.41"
+    port     = "22"
+  }
+  provisioner "remote-exec" {
+    inline = ["sudo hostnamectl set-hostname dockserv-1"]
+  }
+}
