@@ -6,15 +6,14 @@ provider "proxmox" {
 }
 
 resource "proxmox_vm_qemu" "dockserv" {
-  count = 1
-  name  = "dockserv-${count.index + 1}"
+  name  = "dockserv"
 
   target_node = var.proxmox_node
   clone       = "xsob-ubuntu-server-jammy-v1.0.0"
 
   agent    = 1
   bootdisk = "scsi0"
-  cores    = 2
+  cores    = 1
   cpu      = "host"
   os_type  = "cloud-init"
   memory   = 4096
@@ -37,18 +36,22 @@ resource "proxmox_vm_qemu" "dockserv" {
     ignore_changes = [network]
   }
 
-  ipconfig0 = "ip=192.168.1.9${count.index + 1}/24,gw=192.168.1.1"
+  ipconfig0 = "ip=192.168.1.91/24,gw=192.168.1.1"
 
   connection {
     type     = "ssh"
     user     = "xsob"
     password = var.user_password
-    host     = "192.168.1.9${count.index + 1}"
+    host     = "192.168.1.91"
     port     = "22"
   }
 }
 
 resource "null_resource" "set_hostname" {
+  depends_on = [
+    proxmox_vm_qemu.dockserv
+  ]
+
   connection {
     type     = "ssh"
     user     = "xsob"
@@ -57,6 +60,6 @@ resource "null_resource" "set_hostname" {
     port     = "22"
   }
   provisioner "remote-exec" {
-    inline = ["sudo hostnamectl set-hostname dockserv-1"]
+    inline = ["sudo hostnamectl set-hostname dockserv"]
   }
 }
