@@ -68,4 +68,11 @@ EOF
   provisioner "ansible" {
     playbook_file = "../../provisioners/ansible/dotfiles.yml"
   }
+
+  provisioner "shell" {
+    inline = [
+      "sudo truncate -s 0 /etc/machine-id",
+      "sudo truncate -s 0 /var/lib/dbus/machine-id"
+    ]
+  }
 }
