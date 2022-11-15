@@ -1,6 +1,7 @@
 # Homelab
 
 ## Proxmox Server
+
 ### Install instructions
 
 1.  Name the node
