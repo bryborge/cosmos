@@ -3,6 +3,8 @@ secrets.json
 
 # Terraform
 .terraform/
+*.tfstate
+*.tfstate.backup
 
 # Misc
 *.log
