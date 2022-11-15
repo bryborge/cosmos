@@ -1,10 +1,7 @@
-# Packer
-secrets.json
-
 # Terraform
-.terraform/
+**/.terraform/*
 *.tfstate
-*.tfstate.backup
+*.tfstate.*
 
 # Misc
 *.log
