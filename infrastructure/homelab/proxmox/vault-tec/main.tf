@@ -26,9 +26,9 @@ resource "proxmox_vm_qemu" "vault-tec" {
 
   disk {
     iothread = 1
-    size     = "100G"
-    storage  = "tank"
-    type     = "scsi"
+    size     = "100G" # required
+    storage  = "tank" # required
+    type     = "scsi" # required
   }
 
   network {
@@ -48,6 +48,14 @@ resource "proxmox_vm_qemu" "vault-tec" {
     password = var.user_password
     host     = self.ssh_host
     port     = "22"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo growpart /dev/sda 2",
+      "sudo resize2fs /dev/sda2",
+      "sudo partprobe /dev/sda"
+    ]
   }
 
   provisioner "remote-exec" {
