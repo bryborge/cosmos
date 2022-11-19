@@ -1,6 +1,6 @@
-# Homelab
+# Proxmox
 
-## Proxmox Server
+Proxmox VE server hosted in my Homelab.
 
 ### Install instructions
 
