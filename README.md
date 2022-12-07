@@ -81,7 +81,7 @@ This project is split out into two primary sections -- "golden image" definition
 ### Golden Images
 
 ```sh
-📁 golden-images        # base image templates defined as code, organized by os/distro
+📁 golden-images # base image templates, organized by os/distro
 ├── 📁 ...
 └── 📁 ubuntu
     ├── 📁 cloud-init   # config for cloud-init
@@ -91,9 +91,10 @@ This project is split out into two primary sections -- "golden image" definition
 ### Infrastructure
 
 ```sh
-📁 infrastructure    # infrastructure defined as code
-├── 📁 homelab       # on-prem infrastructure (e.g. proxmox, openstack)
-└── 📁 providers     # platform-specific infrastructure (e.g. aws, gcp)
+📁 infrastructure # infrastructure defined as code
+├── 📁 aws        # Amazon Web Services (provider)
+├── 📁 ...
+└── 📁 proxmox    # Proxmox VE Server (on-prem)
 ```
 
 ## 🔧 Tooling
