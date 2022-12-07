@@ -51,23 +51,23 @@ resource "proxmox_vm_qemu" "vault-tec" {
   }
 
   provisioner "remote-exec" {
-    inline = [
-      "sudo growpart /dev/sda 2",
-      "sudo resize2fs /dev/sda2",
-      "sudo partprobe /dev/sda"
-    ]
-  }
-
-  provisioner "remote-exec" {
     inline = ["sudo hostnamectl set-hostname vault-tec-${count.index + 1}"]
   }
 
+  # 1. Copy vault files over to VM
+  # 2. SSL Certs
+  #    https://support.apple.com/en-gu/guide/keychain-access/kyca11871/mac#:~:text=In%20the%20Keychain%20Access%20app,from%20the%20pop%2Dup%20menus
+  #    https://github.com/ChristianLempa/cheat-sheets/blob/main/misc/ssl-certs.md
+  #    https://www.hashicorp.com/blog/certificate-management-with-vault
+  # 3. Setup Vault etc
+  #    https://developer.hashicorp.com/vault/tutorials/operations/generate-root
+  # provisioner "remote-exec" {
+  #   inline = [
+  #     ""
+  #   ]
+  # }
+
   provisioner "remote-exec" {
-    inline = [
-      "wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg >/dev/null",
-      "gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint",
-      "echo \"deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main\" | sudo tee /etc/apt/sources.list.d/hashicorp.list",
-      "sudo apt update && sudo apt install vault"
-    ]
+    file = "scripts/provision.sh"
   }
 }

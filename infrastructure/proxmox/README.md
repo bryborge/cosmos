@@ -19,3 +19,4 @@ Proxmox VE server hosted in my Homelab.
         1.  UNCHECK "privilege separation"
     3.  Create User and API Token Permissios (Administrator)
         1.  propagate "true"
+3.  Add SSL Certs
