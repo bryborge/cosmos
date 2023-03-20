@@ -14,33 +14,31 @@
 
 ## Table of Contents
 
-<details>
-  <summary>Show/Hide</summary>
-  <ol>
-    <li>
-      <a href="#-about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#-definitions">Definitions</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#-structure">Structure</a>
-      <ul>
-        <li><a href="#golden-images">Golden Images</a></li>
-        <li><a href="#infrastructure">Infrastructure</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#-tooling">Tooling</a>
-    </li>
-    <li>
-      <a href="#-license">License</a>
-    </li>
-    <li>
-      <a href="#-further-reading">Further Reading</a>
-    </li>
-  </ol>
-</details>
+<ol>
+  <li>
+    <a href="#-about-the-project">About The Project</a>
+    <ul>
+      <li><a href="#-definitions">Definitions</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#-structure">Structure</a>
+    <ul>
+      <li><a href="#golden-images">Golden Images</a></li>
+      <li><a href="#infrastructure">Infrastructure</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#-tooling">Tooling</a>
+  </li>
+  <li>
+    <a href="#-license">License</a>
+  </li>
+  <li>
+    <a href="#-further-reading">Further Reading</a>
+  </li>
+</ol>
+<br />
 
 ## 🚀 About the Project
 
