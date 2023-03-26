@@ -3,7 +3,7 @@
 Enter a description here (e.g., "Module to create database.").
 
 Documentation is created with [terraform-docs](https://terraform-docs.io/).
-To generate, run: 
+To generate, run:
 
 ```sh
 terraform-docs markdown table --output-file README.md --output-mode inject .
@@ -11,7 +11,7 @@ terraform-docs markdown table --output-file README.md --output-mode inject .
 
 ## Usage
 
-```
+```sh
 module "local_module" {
   source = "../modules"
 
