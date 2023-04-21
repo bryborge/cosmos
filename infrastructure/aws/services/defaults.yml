@@ -2,5 +2,5 @@
 aws_accounts:
   production:
     id: "388372205874"
-    role_name: OrganizationAccountAccessRole # default role
-    tier: production
+    # role_name: OrganizationAccountAccessRole # default role
+    # tier: production
