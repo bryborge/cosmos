@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-  <img src="assets/imgs/logo.png" alt="The Cosmos project logo depicting an astronaut" width="190" height="226" />
+  <img src="../assets/logo.png?raw=true" alt="The Cosmos project logo depicting an astronaut" width="190" height="226" />
   <br />
   <h1 align="center">Cosmos</h1>
   <p align="center">
