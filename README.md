@@ -21,14 +21,6 @@ adhering to infrastructure-as-code principles where possible.
 
 ### 📖 Definitions
 
-*   Golden Image
-
-    > _A golden image is a base image on top of which developers can build applications, letting them focus on the
-    > application itself instead of system dependencies and patches. A typical golden image includes common system,
-    > logging, and monitoring tools, recent security patches, and application dependencies._
-    >
-    > -- Hashicorp ([Source article](https://learn.hashicorp.com/tutorials/packer/golden-image-with-hcp-packer))
-
 *   IT Infrastructure
 
     > _Information technology (IT) infrastructure are the components required to operate and manage enterprise IT
