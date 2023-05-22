@@ -1,3 +1,0 @@
-[pis]
-3d.bletchleylab.net ansible_host=10.40.40.111 ansible_user=pi
-dns.bletchleylab.net ansible_host=192.168.1.121 ansible_user=pi

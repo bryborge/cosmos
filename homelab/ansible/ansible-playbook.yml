@@ -1,0 +1,7 @@
+---
+- name: Configure server
+  hosts: raspis
+  gather_facts: true
+  become: true
+  roles:
+    - raspberrypi
