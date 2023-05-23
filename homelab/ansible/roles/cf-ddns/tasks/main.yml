@@ -1,0 +1,8 @@
+---
+# Clone cloudflare-ddns and cd cloudflare-ddns to home dir /home/sonofborge/cloudflare-ddns
+#   https://github.com/sonofborge/cloudflare-ddns
+# cp config-example.json config.json
+# Update config.json with values
+# Give permission to start up script chmod +x ./start-sync.sh
+# Create cron rule as follows (run every 15th minute)
+#   `*/15 * * * * /home/your_username_here/cloudflare-ddns/start-sync.sh`

@@ -27,7 +27,7 @@
 - name: Add primary user to i2c group
   ansible.builtin.user:
     name: "{{ primary_user }}"
-    group: i2c
+    groups: i2c
 
 - name: Clone the UCTRONICS Pi Rack Pro code via git
   ansible.builtin.git:
@@ -52,3 +52,18 @@
     state: started
     name: rc-local
     enabled: true
+
+- name: Create /mnt/ssd directory
+  ansible.builtin.file:
+    path: /mnt/ssd
+    state: directory
+    mode: "0755"
+    owner: "{{ primary_user }}"
+    group: "{{ primary_user }}"
+
+- name: Mount up ssd by label
+  ansible.posix.mount:
+    path: /mnt/ssd
+    src: LABEL=closet
+    fstype: ext4
+    state: present
