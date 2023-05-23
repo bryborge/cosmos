@@ -1,6 +1,6 @@
 # Pirack
 
-Provisions the UTRONICS Pi Rack Pro display and power button for Raspberry Pi hosts running Ubuntu.
+Provisions the UCTRONICS Pi Rack Pro display and power button for Raspberry Pi hosts running Ubuntu.
 
 ## Requirements
 

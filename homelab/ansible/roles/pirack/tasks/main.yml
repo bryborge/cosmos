@@ -26,13 +26,13 @@
 
 - name: Add primary user to i2c group
   ansible.builtin.user:
-    name: sonofborge
+    name: "{{ primary_user }}"
     group: i2c
 
-- name: Example clone of a single branch
+- name: Clone the UCTRONICS Pi Rack Pro code via git
   ansible.builtin.git:
-    repo: https://github.com/sonofborge/SKU_RM0004.git
-    dest: /home/sonofborge/SKU_RM0004
+    repo: "https://github.com/{{ github_account }}/SKU_RM0004.git"
+    dest: "/home/{{ primary_user }}/SKU_RM0004"
     single_branch: true
     version: main
 
@@ -41,7 +41,7 @@
     dest: /etc/rc.local
     content: |
       #!/bin/sh -e
-      cd /home/sonofborge/SKU_RM0004
+      cd "/home/{{ primary_user }}/SKU_RM0004"
       make clean
       make
       ./display &
