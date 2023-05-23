@@ -1,6 +1,6 @@
 galaxy_info:
   author: sonofborge
-  description: your role description
+  description: The common tasks for setting up machines running Ubuntu.
   license: MIT
   min_ansible_version: "2.1"
 
