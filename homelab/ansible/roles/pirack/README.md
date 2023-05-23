@@ -8,7 +8,8 @@ None.
 
 ## Role Variables
 
-None.
+*   `primary_user` - The primary user on the system
+*   `github_account` - The github account where the UCTRONICS code lives
 
 ## Dependencies
 
