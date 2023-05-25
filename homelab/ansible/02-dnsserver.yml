@@ -1,0 +1,12 @@
+---
+- name: Setup Cloudflare DDNS service
+  hosts: dnsserver
+  gather_facts: true
+  become: true
+  vars_prompt:
+    - name: cf_api_token
+      prompt: Enter Cloudflare API Token
+    - name: cf_zone_id
+      prompt: Enter Cloudflare Zone ID
+  roles:
+    - cf_ddns
