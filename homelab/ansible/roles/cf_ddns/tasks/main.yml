@@ -1,4 +1,11 @@
 ---
+- name: Ensure venv is installed via apt
+  ansible.builtin.apt:
+    name: python3.10-venv
+    state: present
+    update_cache: true
+  become: true
+
 - name: Clone the Cloudflare DDNS code via git
   ansible.builtin.git:
     repo: "https://github.com/{{ github_account }}/cloudflare-ddns.git"
