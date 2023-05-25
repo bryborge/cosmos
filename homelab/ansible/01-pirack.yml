@@ -1,0 +1,7 @@
+---
+- name: Configure raspi machines mounted in UCTRONICS Pi Rack Pro
+  hosts: pirack
+  gather_facts: true
+  become: true
+  roles:
+    - pirack

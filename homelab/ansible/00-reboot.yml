@@ -1,5 +1,5 @@
 ---
-- name: Reboot
+- name: Reboot all systems
   hosts: all
   gather_facts: true
   tasks:

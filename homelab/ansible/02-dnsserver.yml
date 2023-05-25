@@ -1,18 +1,4 @@
 ---
-- name: Configure all machines
-  hosts: all
-  gather_facts: true
-  become: true
-  roles:
-    - common
-
-- name: Configure raspi machines mounted in UCTRONICS Pi Rack Pro
-  hosts: pirack
-  gather_facts: true
-  become: true
-  roles:
-    - pirack
-
 - name: Setup Cloudflare DDNS service
   hosts: dnsserver
   gather_facts: true
