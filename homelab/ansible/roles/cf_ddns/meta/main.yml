@@ -1,6 +1,6 @@
 galaxy_info:
   author: sonofborge
-  description: Task to setup and enable the Cloudflare DDNS service.
+  description: Sets up and enables the Cloudflare DDNS updater service.
   license: MIT
   min_ansible_version: "2.1"
 
