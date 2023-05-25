@@ -1,0 +1,15 @@
+---
+# - name: Download automated Adguard Home install script
+#   ansible.builtin.get_url:
+#     url: https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh
+#     dest: "/home/{{ primary_user }}/install.sh"
+#     mode: "0755"
+
+# - name: Run automated Adguard Home install script
+#   ansible.builtin.shell: "/home/{{ primary_user }}/install.sh >> /tmp/adguard_install.log"
+
+- name: Install system dependencies
+  ansible.builtin.package:
+    name:
+      - libcap2-bin
+    state: present

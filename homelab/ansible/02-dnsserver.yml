@@ -1,5 +1,5 @@
 ---
-- name: Setup Cloudflare DDNS service
+- name: Setup Home DNS Server
   hosts: dnsserver
   gather_facts: true
   become: true
@@ -10,3 +10,4 @@
       prompt: Enter Cloudflare Zone ID
   roles:
     - cf_ddns
+    - adguard
