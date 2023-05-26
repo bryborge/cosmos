@@ -1,3 +1,7 @@
+# SOPS
+## vscode extension: https://github.com/signageos/vscode-sops
+*.decrypted~*
+
 # Terraform
 **/.terraform/*
 *.tfstate

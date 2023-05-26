@@ -1,4 +1,9 @@
 ---
+- name: Load encrypted variables
+  community.sops.load_vars:
+    file: vars/secrets.sops.yml
+    expressions: evaluate-on-load
+
 - name: Ensure venv is installed via apt
   ansible.builtin.apt:
     name: python3.10-venv
@@ -22,13 +27,13 @@
 
 - name: Add API token to config
   ansible.builtin.replace:
-    path: "/home/sonofborge/cloudflare-ddns/config.json"
+    path: "/home/{{ primary_user }}/cloudflare-ddns/config.json"
     regexp: api_token_here
     replace: "{{ cf_api_token }}"
 
 - name: Add Cloudflare Zone ID to config
   ansible.builtin.replace:
-    path: "/home/sonofborge/cloudflare-ddns/config.json"
+    path: "/home/{{ primary_user }}/cloudflare-ddns/config.json"
     regexp: zone_id_here
     replace: "{{ cf_zone_id }}"
 

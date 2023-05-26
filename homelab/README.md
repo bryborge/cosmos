@@ -2,9 +2,13 @@
 
 This is where all Infrastructure as Code (IaC) for my Homelab lives.
 
-## Tools Used
+## 🔧 Tooling
 
-*   [Ansible](https://www.ansible.com/) - Simple IT automation
+*   [Ansible](https://www.ansible.com/) - a radically simple IT automation platform that makes your applications and
+    systems easier to deploy and maintain.
+*   [Secrets OPerationS (SOPS)](https://github.com/mozilla/sops) - Simple and flexible tool for managing secrets.
+*   [age](https://github.com/FiloSottile/age) - A simple, modern and secure encryption tool (and Go library) with small
+    explicit keys, no config options, and UNIX-style composability.
 
 ## 🥧 Raspberry Pi Systems
 
@@ -38,3 +42,7 @@ whenever possible. This provides a reliable/repeatable baseline by which I can p
     7.  Enable Telemetry
 2.  Insert newly flashed drive into the raspberry pi and power on. Give it 1-2 minutes to boot.
 3.  Test SSH connection: `ssh <username>@<hostname>`
+
+## Resources
+
+*   [Enable SSH on Raspberry Pi when you flash the SD card](https://roboticsbackend.com/enable-ssh-on-raspberry-pi-raspbian/#New_feature_Enable_SSH_directly_when_you_flash_the_SD_card)
