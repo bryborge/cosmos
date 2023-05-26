@@ -4,8 +4,13 @@ Sets up and enables the Cloudflare DDNS updater service.
 
 ## Requirements
 
-In order for the Cloudflare DDNS updater service to function properly, you must
-first decrypt the `vars/secrets.yml` file before running the ansible playbook.
+In order for the Cloudflare DDNS updater service to function properly, it needs
+the decrypted values stored in `vars/secrets.sops.yml`. This file (and the
+values stored within) are decrypted at runtime using `community.sops.load_vars`.
+
+For more information about protecting Ansible secrets with SOPS, check out
+[Ansible's Documentation](https://docs.ansible.com/ansible/latest/collections/community/sops/docsite/guide.html)
+on the topic.
 
 ## Role Variables
 

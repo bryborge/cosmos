@@ -1,5 +1,5 @@
 ---
-- name: Load encrypted credentials
+- name: Load encrypted variables
   community.sops.load_vars:
     file: vars/secrets.sops.yml
     expressions: evaluate-on-load
