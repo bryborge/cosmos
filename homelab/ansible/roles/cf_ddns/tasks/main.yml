@@ -1,6 +1,8 @@
 ---
-- name: Include secret vars
-  ansible.builtin.include_vars: vars/secrets.yml
+- name: Load encrypted credentials
+  community.sops.load_vars:
+    file: vars/secrets.sops.yml
+    expressions: evaluate-on-load
 
 - name: Ensure venv is installed via apt
   ansible.builtin.apt:
