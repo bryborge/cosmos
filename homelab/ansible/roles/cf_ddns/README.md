@@ -4,29 +4,28 @@ Sets up and enables the Cloudflare DDNS updater service.
 
 ## Requirements
 
-None.
+In order for the Cloudflare DDNS updater service to function properly, you must
+first decrypt the `vars/main.yml` file before running the ansible playbook.
 
 ## Role Variables
 
 *   `github_account` - The Github account where the cloudflare-ddns code lives
 *   `github_branch` - The Github branch for the cloudflare-ddns repository
 *   `primary_user` - The primary user on the system
-*   `cf_api_token` - The Cloudflare API Token
-*   `cf_zone_id` - The Cloudflare Zone ID
+*   `cf_api_token` - The Cloudflare API Token _(secret)_
+*   `cf_zone_id` - The Cloudflare Zone ID _(secret)_
 
 ## Dependencies
 
-None.
+The following dependencies are for encryption/decryption of secret vars.
+
+*   [SOPS (Secrets OPerationS)](https://github.com/mozilla/sops)
+*   [age](https://github.com/FiloSottile/age)
 
 ## Example Playbook
 
 ```yml
 - hosts: servers
-  vars_prompt:
-    - name: cf_api_token
-      prompt: Enter Cloudflare API Token
-    - name: cf_zone_id
-      prompt: Enter Cloudflare Zone ID
   roles:
     - cf_ddns
 ```
