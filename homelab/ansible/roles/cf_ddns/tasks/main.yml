@@ -1,5 +1,6 @@
 ---
-- include_vars: vars/secrets.yml
+- name: Include secret vars
+  ansible.builtin.include_vars: vars/secrets.yml
 
 - name: Ensure venv is installed via apt
   ansible.builtin.apt:
@@ -24,13 +25,13 @@
 
 - name: Add API token to config
   ansible.builtin.replace:
-    path: "/home/sonofborge/cloudflare-ddns/config.json"
+    path: "/home/{{ primary_user }}/cloudflare-ddns/config.json"
     regexp: api_token_here
     replace: "{{ cf_api_token }}"
 
 - name: Add Cloudflare Zone ID to config
   ansible.builtin.replace:
-    path: "/home/sonofborge/cloudflare-ddns/config.json"
+    path: "/home/{{ primary_user }}/cloudflare-ddns/config.json"
     regexp: zone_id_here
     replace: "{{ cf_zone_id }}"
 

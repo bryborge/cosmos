@@ -5,7 +5,7 @@ Sets up and enables the Cloudflare DDNS updater service.
 ## Requirements
 
 In order for the Cloudflare DDNS updater service to function properly, you must
-first decrypt the `vars/main.yml` file before running the ansible playbook.
+first decrypt the `vars/secrets.yml` file before running the ansible playbook.
 
 ## Role Variables
 

@@ -42,3 +42,7 @@ whenever possible. This provides a reliable/repeatable baseline by which I can p
     7.  Enable Telemetry
 2.  Insert newly flashed drive into the raspberry pi and power on. Give it 1-2 minutes to boot.
 3.  Test SSH connection: `ssh <username>@<hostname>`
+
+## Resources
+
+*   [Enable SSH on Raspberry Pi when you flash the SD card](https://roboticsbackend.com/enable-ssh-on-raspberry-pi-raspbian/#New_feature_Enable_SSH_directly_when_you_flash_the_SD_card)
