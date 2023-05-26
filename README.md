@@ -42,6 +42,11 @@ adhering to infrastructure-as-code principles where possible.
 
 *   [Terraform](https://www.terraform.io/) - IaC tool for building, changing, and versioning infrastructure safely
     and efficiently.
+*   [Ansible](https://www.ansible.com/) - A radically simple IT automation platform that makes your applications and
+    systems easier to deploy and maintain.
+*   [Secrets OPerationS (SOPS)](https://github.com/mozilla/sops) - Simple and flexible tool for managing secrets.
+*   [age](https://github.com/FiloSottile/age) - A simple, modern and secure encryption tool (and Go library) with small
+    explicit keys, no config options, and UNIX-style composability.
 
 ## ⭐ License
 

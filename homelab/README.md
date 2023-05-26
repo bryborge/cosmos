@@ -2,9 +2,13 @@
 
 This is where all Infrastructure as Code (IaC) for my Homelab lives.
 
-## Tools Used
+## 🔧 Tooling
 
-*   [Ansible](https://www.ansible.com/) - Simple IT automation
+*   [Ansible](https://www.ansible.com/) - a radically simple IT automation platform that makes your applications and
+    systems easier to deploy and maintain.
+*   [Secrets OPerationS (SOPS)](https://github.com/mozilla/sops) - Simple and flexible tool for managing secrets.
+*   [age](https://github.com/FiloSottile/age) - A simple, modern and secure encryption tool (and Go library) with small
+    explicit keys, no config options, and UNIX-style composability.
 
 ## 🥧 Raspberry Pi Systems
 

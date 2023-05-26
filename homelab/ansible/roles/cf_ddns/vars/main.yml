@@ -1,4 +1,26 @@
----
+# yamllint disable-file
 github_account: sonofborge
 github_branch: sonofborge
 primary_user: sonofborge
+cf_api_token: ENC[AES256_GCM,data:CvvvBerrCFqquC1OM2IspKUL3/th1grB8SowpyEZcKW2Zi4zLlH01A==,iv:F4SLu73Sb1SCpStGSmwCZXNY6PnJgEqpbF0CjTxCF9A=,tag:NvzPnJ55GyeeUEgIkfGjnA==,type:str]
+cf_zone_id: ENC[AES256_GCM,data:NEWYGWZt/VZVMLptDVGWn4eJqpgFA8qgPHWnSo8WuDI=,iv:Pr6+NFiEAV51Hnkt0b+3oZqS7x24a5os4XhRvtRL7VM=,tag:yJ8oqhNCpUr7fYdx7flb6w==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1jh3xgndxr62gslph0l6evu7ayt6f4uyxdmnmr3x98z33zrpka4gqglaw8d
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBadEhNVE83YmZ0bndFQ2ta
+            SVhPU3FaSUQyZmlPUXNSQk1wVUtLV0ttVUZNCjdDNzdMNmRVeFV1cUl3c21KUjNC
+            bE9rK2pjaWFLYVM5SDVWVHpmTE9kK2MKLS0tIHNvRy9SMHdqQXJpdTJaaGlLekdT
+            NEd0ZnpJSG5JcGJhc2JKZW9oVXZRaHcKmdFlL1ozpYcm2DQUPHgasLNDRea3lbBU
+            pTQNSZ3TwWUtk20xVZg4Z4uC3E5YtmR4WiqFmZip6i5VQWf4eZ/MjQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-05-26T02:27:24Z"
+    mac: ENC[AES256_GCM,data:pM3AhUIJNqhcaytC5DMrpRH6peBFqe5YWzHkHNX8JX84BLsN63+rgfa4DAClrHQFfhx8Bh74BBzPRqgYJo5o35om0r3tFiT4Fb2+nBIxrq3gLCUzZzp0a+qcwdbuk1dF3QKKv0SPBnsOXyfPvlO6LION7txOh9FLChtuHCjFgco=,iv:G7tQxQ+8JRg4/JY9ocyyaiNYC1V9bfCoYKnfRL0HMSc=,tag:DRsOPS4tbtxKLGZ7VVjNqg==,type:str]
+    pgp: []
+    encrypted_regex: ^(cf_api_token|cf_zone_id)$
+    version: 3.7.3
