@@ -10,6 +10,31 @@ This is where all Infrastructure as Code (IaC) for my Homelab lives.
 *   [age](https://github.com/FiloSottile/age) - A simple, modern and secure encryption tool (and Go library) with small
     explicit keys, no config options, and UNIX-style composability.
 
+## Ansible
+
+### Useful commands
+
+*   Encrypt a secrets file called `secrets.sops.yml`
+
+    ```sh
+    sops \
+        --encrypt \
+        --age <age-key> \
+        --encrypted-regex '^(cf_api_token|cf_zone_id)$' \
+        --in-place secrets.sops.yml
+    ```
+
+*   Decrypt a secrets file called `secrets.sops.yml`
+
+    ```sh
+    sops \
+        --decrypt \
+        --age <age-key> \
+        --encrypted-regex '^(cf_api_token|cf_zone_id)$' \
+        --in-place secrets.sops.yml
+    ```
+
+
 ## 🥧 Raspberry Pi Systems
 
 I have several Raspberry Pis deployed throughout my Homelab running a variety of workloads. In order to simplify the
