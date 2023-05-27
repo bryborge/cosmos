@@ -1,0 +1,6 @@
+---
+- name: Install Octoprint via Snap
+  community.general.snap:
+    name: octoprint-pfs
+    channel: latest/edge
+    state: present
