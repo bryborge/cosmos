@@ -10,7 +10,7 @@ This is where all Infrastructure as Code (IaC) for my Homelab lives.
 *   [age](https://github.com/FiloSottile/age) - A simple, modern and secure encryption tool (and Go library) with small
     explicit keys, no config options, and UNIX-style composability.
 
-## Ansible
+## 🤖 Ansible
 
 ### Useful commands
 
@@ -68,6 +68,6 @@ whenever possible. This provides a reliable/repeatable baseline by which I can p
 2.  Insert newly flashed drive into the raspberry pi and power on. Give it 1-2 minutes to boot.
 3.  Test SSH connection: `ssh <username>@<hostname>`
 
-## Resources
+## 📚 Resources
 
 *   [Enable SSH on Raspberry Pi when you flash the SD card](https://roboticsbackend.com/enable-ssh-on-raspberry-pi-raspbian/#New_feature_Enable_SSH_directly_when_you_flash_the_SD_card)
