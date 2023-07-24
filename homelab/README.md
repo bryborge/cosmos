@@ -43,7 +43,7 @@ whenever possible. This provides a reliable/repeatable baseline by which I can p
 
 ### Current Software Used
 
-*   [Ubuntu 22.04 LTS (Jammy Jellyfish)](https://releases.ubuntu.com/jammy/)
+*   [Ubuntu Server 22.04 LTS (Jammy Jellyfish)](https://releases.ubuntu.com/jammy/)
 *   [Raspberry Pi Imager](https://www.raspberrypi.com/software/)
 
 ### Setup
