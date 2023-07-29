@@ -58,7 +58,7 @@
     owner: "{{ primary_user }}"
     group: "{{ primary_user }}"
 
-- name: Mount up ssd by label
+- name: Mount ssd by label
   ansible.posix.mount:
     path: /mnt/ssd
     src: LABEL=closet
