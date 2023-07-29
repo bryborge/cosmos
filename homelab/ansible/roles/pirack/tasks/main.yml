@@ -3,11 +3,8 @@
   ansible.builtin.blockinfile:
     path: /boot/firmware/config.txt
     content: |
-      dtoverlay=gpio-shutdown
-      dtoverlay=gpio_pin=4
-      dtoverlay=active_low=1
-      dtoverlay=gpio_pull=up
-      dtparam=i2c_arm_baudrate=400000
+      i2c_arm_baudrate=400000
+      dtoverlay=gpio-shutdown,gpio_pin=4,active_low=1,gpio_pull=up
     state: present
     insertafter: EOF
 
@@ -66,4 +63,4 @@
     path: /mnt/ssd
     src: LABEL=closet
     fstype: ext4
-    state: present
+    state: mounted
