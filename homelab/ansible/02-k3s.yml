@@ -1,5 +1,5 @@
 ---
-- name: Install and configure master node
+- name: Install and configure server node
   hosts: kpimaster
   gather_facts: true
   become: true
