@@ -1,4 +1,4 @@
-## K3s Ansible
+# ☸️ K3s Ansible
 
 Provision a [Lightweight Kubernetes (k3s)](https://k3s.io/) cluster with Ansible.
 
