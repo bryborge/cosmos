@@ -68,7 +68,7 @@
     endpoint_url: "https://{{ server_ip }}:6443"
 
 - name: Create kubectl symlink
-  file:
+  ansible.builtin.file:
     src: /usr/local/bin/k3s
     dest: /usr/local/bin/kubectl
     state: link
