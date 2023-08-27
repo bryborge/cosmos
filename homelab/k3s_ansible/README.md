@@ -59,7 +59,18 @@ tbd
 
 ## Usage
 
-tbd
+To create the k3s cluster, run the base playbook.
+
+```sh
+ansible-playbook site.yml
+```
+
+To run updates and reboots, run those plabooks as needed.
+
+```sh
+ansible-playbook playbooks/update.yml
+ansible-playbook playbooks/reboot.yml
+```
 
 ## 📚 Resources
 
