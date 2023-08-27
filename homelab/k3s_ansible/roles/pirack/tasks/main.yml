@@ -41,7 +41,7 @@
       make clean
       make
       ./display &
-    mode: a+x
+    mode: "0755"
 
 - name: Make sure rc.local is started (and run on system start)
   ansible.builtin.systemd:
