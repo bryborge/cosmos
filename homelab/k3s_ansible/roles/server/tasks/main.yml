@@ -29,12 +29,12 @@
     path: "{{ k3s_location }}/server"
     mode: "g+rx,o+rx"
 
-- name: Read node-token from master
+- name: Read node-token from server
   ansible.builtin.slurp:
     src: "{{ k3s_location }}/server/node-token"
   register: node_token
 
-- name: Store Master node-token
+- name: Store server node-token
   ansible.builtin.set_fact:
     token: "{{ node_token.content | b64decode | regex_replace('\n', '') }}"
 
@@ -73,8 +73,6 @@
     dest: /usr/local/bin/kubectl
     state: link
 
-# TODO: Decide whether to use containerd or docker. For now, containerd because k3s ships with it.
-#       https://docs.k3s.io/advanced#using-docker-as-the-container-runtime
 - name: Create crictl symlink
   file:
     src: /usr/local/bin/k3s
