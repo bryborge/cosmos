@@ -65,7 +65,7 @@
       --kubeconfig {{ ansible_user_dir }}/.kube/config
   changed_when: true
   vars:
-    endpoint_url: "https://{{ server_ip }}:6443"
+    endpoint_url: "https://{{ apiserver_endpoint }}:6443"
 
 - name: Create kubectl symlink
   ansible.builtin.file:

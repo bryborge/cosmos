@@ -4,5 +4,12 @@ ansible_user: sonofborge
 systemd_dir: /etc/systemd/system
 system_timezone: "UTC"
 server_ip: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
-extra_server_args: ""
+
+flannel_iface: "eth0"
+apiserver_endpoint: "10.40.40.40" # nginx reverse proxy
+
+extra_args: >-
+  --node-ip={{ ansible_facts[flannel_iface]['ipv4']['address'] }}
+extra_server_args: >-
+  --node-taint CriticalAddonsOnly=true:NoExecute
 extra_agent_args: ""
