@@ -74,7 +74,7 @@
     state: link
 
 - name: Create crictl symlink
-  file:
+  ansible.builtin.file:
     src: /usr/local/bin/k3s
     dest: /usr/local/bin/crictl
     state: link
