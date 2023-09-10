@@ -1,0 +1,10 @@
+---
+- name: Reset k3s cluster
+  hosts: k3s_cluster
+  gather_facts: true
+  roles:
+    - role: roles/reset
+      become: true
+
+- name: Include playbook - Reboot (and wait up to 5 mins)
+  ansible.builtin.import_playbook: reboot.yml
