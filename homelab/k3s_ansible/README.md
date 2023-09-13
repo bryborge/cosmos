@@ -2,6 +2,10 @@
 
 Provision a [Lightweight Kubernetes (k3s)](https://k3s.io/) cluster with Ansible.
 
+This is intentionally _not_ a high availability (HA) cluster configuration. By design, this is a basic k3s cluster for
+tinkering and learning Kubernetes. In the future, this will be refactored for HA (and fault tolerance) like a proper
+production cluster.
+
 ## 🛠️ Built With
 
 *   [Python](https://www.python.org/)
@@ -65,11 +69,17 @@ To create the k3s cluster, run the base playbook.
 ansible-playbook site.yml
 ```
 
-To run updates and reboots, run those plabooks as needed.
+To run updates and reboots, run those playbooks as needed.
 
 ```sh
 ansible-playbook playbooks/update.yml
 ansible-playbook playbooks/reboot.yml
+```
+
+To remove k3s from all nodes, run the reset playbook.
+
+```sh
+ansible-playbook playbooks/reset.yml
 ```
 
 ## 📚 Resources

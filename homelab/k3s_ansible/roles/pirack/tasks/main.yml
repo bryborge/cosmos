@@ -48,18 +48,3 @@
     state: started
     name: rc-local
     enabled: true
-
-- name: Create /mnt/ssd directory
-  ansible.builtin.file:
-    path: /mnt/ssd
-    state: directory
-    mode: "0755"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
-
-- name: Mount ssd by label
-  ansible.posix.mount:
-    path: /mnt/ssd
-    src: LABEL={{ volume_label }}
-    fstype: ext4
-    state: mounted
