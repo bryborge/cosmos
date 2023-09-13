@@ -19,4 +19,4 @@
     name: net.ipv6.conf.all.accept_ra
     value: "2"
     state: present
-    reload: yes
+    reload: true
