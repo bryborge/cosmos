@@ -11,6 +11,36 @@ This is where all the Infrastructure as Code (IaC) for my Homelab lives.
 
 *   Raspberry Pi 4
 
+### Naming Convention
+
+I use the following convention to name my servers:
+
+*   Platform
+    *   `HLB` = Homelab
+    *   `AWS` = Amazon Web Services
+    *   `GCP` = Google Cloud Platform
+    *   `MAZ` = Microsoft Azure
+*   Compute Type
+    *   `P` = Physical machine
+    *   `V` = Virtual machine
+*   Configuration
+    *   `S` = Standalone
+    *   `C` = Cluster
+*   Environment
+    *   `D` = Development
+    *   `T` = Test
+    *   `P` = Production
+*   Sequential ID
+    *   `NNN` = (ex: `001`, `002`, ... `100`)
+
+#### Examples
+
+*   `HLB-PSD-001` - A **homelab**-hosted (`HLB`) **physical** machine (`P`) in a **standalone** (`S`) configuration used
+    for **development** (`D`) environment workloads.
+
+*   `AWS-VCP-666` - An **AWS**-hosted (`AWS`) **virtual** machine (`V`) in a **cluster** (`C`) configuration used for
+    **production** (`P`) environment workloads.
+
 ### 🥧 Raspberry Pi Systems
 
 I have several Raspberry Pis deployed throughout my Homelab running a variety of workloads. In order to simplify the
