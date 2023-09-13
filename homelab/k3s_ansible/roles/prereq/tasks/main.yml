@@ -13,3 +13,10 @@
     state: present
     reload: true
   when: ansible_all_ipv6_addresses
+
+- name: Enable IPv6 router advertisements
+  ansible.posix.sysctl:
+    name: net.ipv6.conf.all.accept_ra
+    value: "2"
+    state: present
+    reload: yes
