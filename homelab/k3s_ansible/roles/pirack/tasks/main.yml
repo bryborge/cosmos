@@ -27,7 +27,7 @@
 
 - name: Clone the UCTRONICS Pi Rack Pro code via git
   ansible.builtin.git:
-    repo: "https://github.com/{{ github_account }}/SKU_RM0004.git"
+    repo: "https://github.com/{{ pirack_github_account }}/SKU_RM0004.git"
     dest: "/home/{{ ansible_user }}/SKU_RM0004" # TODO: ansible_user_path ??
     single_branch: true
     version: main

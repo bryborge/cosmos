@@ -1,6 +1,6 @@
 # 🏠🧪 Homelab
 
-This is where all the Infrastructure as Code (IaC) for my Homelab lives.
+All the Infrastructure as Code (IaC) for my Homelab lives here.
 
 ## Overview
 
@@ -47,7 +47,7 @@ I have several Raspberry Pis deployed throughout my Homelab running a variety of
 management of these systems, I use the same operating system installed using the same imager software and settings
 whenever possible. This provides a reliable/repeatable baseline by which I can provision the systems with Ansible.
 
-### Current Software Used
+### Software Used
 
 *   [Ubuntu Server 22.04 LTS (Jammy Jellyfish)](https://releases.ubuntu.com/jammy/)
 *   [Raspberry Pi Imager](https://www.raspberrypi.com/software/)
