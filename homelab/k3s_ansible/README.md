@@ -1,6 +1,6 @@
 # ☸️ K3s Ansible
 
-Provision a [Lightweight Kubernetes (k3s)](https://k3s.io/) cluster with Ansible.
+Provisions a [Lightweight Kubernetes (k3s)](https://k3s.io/) cluster with Ansible.
 
 This is intentionally _not_ a high availability (HA) cluster configuration. By design, this is a basic k3s cluster for
 tinkering and learning Kubernetes. In the future, this will be refactored for HA (and fault tolerance) like a proper
