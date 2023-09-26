@@ -1,6 +1,6 @@
 # 🏠🧪 Homelab
 
-This is where all the Infrastructure as Code (IaC) for my Homelab lives.
+All the Infrastructure as Code (IaC) for my Homelab lives here.
 
 ## Overview
 

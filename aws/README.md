@@ -1,6 +1,6 @@
 # ☁️  Amazon Web Services (AWS)
 
-This is where all the Infrastructure as Code (IaC) for the various resources in AWS that I use lives.
+All the Infrastructure as Code (IaC) for the various resources in AWS that I use lives here.
 
 ## 🛠️  Built With
 
