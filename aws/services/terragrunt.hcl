@@ -36,7 +36,7 @@ remote_state {
   config = {
     encrypt        = true
     bucket         = local.bucket_name
-    key            = "cosmos/${path_relative_to_include()}/${local.account_id}/${local.region}/terraform.tfstate"
+    key            = "infrastructure/${local.path}/${local.account_id}/${local.region}/terraform.tfstate"
     region         = local.region
     dynamodb_table = local.dynamodb_table
   }
