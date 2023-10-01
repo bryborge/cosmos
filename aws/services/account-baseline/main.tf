@@ -3,7 +3,6 @@ provider "aws" {
   allowed_account_ids = [var.aws_account_id]
 }
 
-# Variables
 locals {
   name = "Default VPC"
 
@@ -16,7 +15,7 @@ locals {
   }
 }
 
-# Resources
-resource "aws_default_vpc" "default" {
-  tags = local.tags
+module default_vpc {
+  source = "../../modules/default-vpc"
+  tags   = local.tags
 }

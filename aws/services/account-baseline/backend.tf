@@ -4,7 +4,7 @@ terraform {
     bucket         = "tf-production-us-west-2-388372205874"
     dynamodb_table = "tf-lock-production"
     encrypt        = true
-    key            = "infrastructure/production/00-baseline/default-vpc/388372205874/us-west-2/terraform.tfstate"
+    key            = "infrastructure/account-baseline/388372205874/us-west-2/terraform.tfstate"
     region         = "us-west-2"
   }
 }

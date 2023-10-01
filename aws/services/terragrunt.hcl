@@ -4,11 +4,12 @@ locals {
   path = path_relative_to_include()
 
   # Fetch the default environment from the path the service is in.
-  environment_component_of_path = split("/", local.path)[0]
-  default_environment           = local.environment_component_of_path
-  environment                   = get_env("ENVIRONMENT", local.default_environment)
+  // environment_component_of_path = split("/", local.path)[0]
+  // default_environment           = local.environment_component_of_path
+  // environment                   = get_env("ENVIRONMENT", local.default_environment)
 
-  account_id = get_env("ACCOUNT_ID", get_aws_account_id())
+  environment = "production"
+  account_id  = get_env("ACCOUNT_ID", get_aws_account_id())
 
   # Fetch the region from the environment automatically in the following order:
   #   Docs: https://docs.aws.amazon.com/sdkref/latest/guide/feature-region.html

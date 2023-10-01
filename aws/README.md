@@ -2,9 +2,10 @@
 
 All the Infrastructure as Code (IaC) for the various resources in AWS that I use lives here.
 
-## 🛠️  Built With
+## 🌎 Overview
 
-*   [Terraform](https://www.terraform.io/)
+All infrastructure for this platform provider is managed with [Terraform](https://www.terraform.io/) and follows the
+following structure.
 
 ## 🚀 Getting Started
 
