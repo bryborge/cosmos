@@ -17,7 +17,12 @@
 ## 🚀 About the Project
 
 **Cosmos** is a monorepo where I define and manage infrastructure in my homelab and on various cloud provider platforms,
-adhering to infrastructure-as-code principles where possible.
+adhering to Infrastructure as Code (IaC) principles where possible.
+
+### 🧬 Structure
+
+This project is subdivided by cloud provider platform.  Each platform contains documentation specific to what tools are
+used to manage it, and how to use them.
 
 ### 📖 Definitions
 
@@ -29,7 +34,7 @@ adhering to infrastructure-as-code principles where possible.
     >
     > -- Red Hat ([Source article](https://www.redhat.com/en/topics/cloud-computing/what-is-it-infrastructure))
 
-*   Infrastructure (as Code)
+*   Infrastructure as Code
 
     With that understanding of IT Infrastructure, we can describe Infrastructure as Code (IaC) in the following way.
 
@@ -37,16 +42,6 @@ adhering to infrastructure-as-code principles where possible.
     > manual processes._
     >
     > -- Red Hat ([Source article](https://www.redhat.com/en/topics/automation/what-is-infrastructure-as-code-iac))
-
-## 🔧 Tooling
-
-*   [Terraform](https://www.terraform.io/) - IaC tool for building, changing, and versioning infrastructure safely
-    and efficiently.
-*   [Ansible](https://www.ansible.com/) - A radically simple IT automation platform that makes your applications and
-    systems easier to deploy and maintain.
-*   [Secrets OPerationS (SOPS)](https://github.com/mozilla/sops) - Simple and flexible tool for managing secrets.
-*   [age](https://github.com/FiloSottile/age) - A simple, modern and secure encryption tool (and Go library) with small
-    explicit keys, no config options, and UNIX-style composability.
 
 ## ⭐ License
 

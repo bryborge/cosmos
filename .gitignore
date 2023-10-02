@@ -3,9 +3,11 @@
 *.decrypted~*
 
 # Terraform
-**/.terraform/*
+**/.terraform
 *.tfstate
 *.tfstate.*
+.terragrunt-cache
+backend.tf
 
 # Misc
 *.log

@@ -3,20 +3,12 @@ provider "aws" {
   allowed_account_ids = [var.aws_account_id]
 }
 
-# Variables
-locals {
-  name = "Default VPC"
-
+resource "aws_default_vpc" "default" {
   tags = {
-    Name        = local.name
+    Name        = "Default VPC"
     Region      = var.aws_region
     Environment = var.environment
     GithubRepo  = "cosmos"
     GithubOrg   = "sonofborge"
   }
-}
-
-# Resources
-resource "aws_default_vpc" "default" {
-  tags = local.tags
 }
