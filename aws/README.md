@@ -22,12 +22,16 @@ components that make up my service infrastructure. Modules are sharable and re-u
     └── module-n
 ```
 
-### Hashicorp License Change
+### 🗒️  Hashicorp License Change
 
 On 10 Aug, 2023, Hashicorp announced that they were changing Terraform's license from
 [MPLv2](https://www.mozilla.org/en-US/MPL/2.0/) to [BSL](https://www.hashicorp.com/bsl). At some point, I will make the
 switch to [OpenTofu](https://opentofu.org/). Until that time, I will remain on Terraform v1.5.5 which is still under
 MPLv2.
+
+For further reading, check out these articles from Terragrunt:
+*   [The Impact of the HashiCorp License Change on Gruntwork Customers](https://blog.gruntwork.io/the-impact-of-the-hashicorp-license-change-on-gruntwork-customers-5fcd096ba86a)
+*   [The Future of Terraform Must Be Open](https://blog.gruntwork.io/the-future-of-terraform-must-be-open-ab0b9ba65bca)
 
 ## 🚀 Getting Started
 
@@ -54,3 +58,7 @@ These instructions will walk you through tooling installation and setup on your 
     ```sh
     tfenv install
     ```
+
+## 🧠 Additional Materials
+
+*  [How to Build Reusable, Composable, Battle-tested Terraform Modules](https://www.youtube.com/watch?v=LVgP63BkhKQ)

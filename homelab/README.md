@@ -106,6 +106,6 @@ whenever possible. This provides a reliable/repeatable baseline by which I can p
         --in-place secrets.sops.yml
     ```
 
-## Resources
+## 🧠 Additional Materials
 
 *   [Enable SSH on Raspberry Pi when you flash the SD card](https://roboticsbackend.com/enable-ssh-on-raspberry-pi-raspbian/#New_feature_Enable_SSH_directly_when_you_flash_the_SD_card)
