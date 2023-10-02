@@ -22,6 +22,13 @@ components that make up my service infrastructure. Modules are sharable and re-u
     └── module-n
 ```
 
+### Hashicorp License Change
+
+On 10 Aug, 2023, Hashicorp announced that they were changing Terraform's license from
+[MPLv2](https://www.mozilla.org/en-US/MPL/2.0/) to [BSL](https://www.hashicorp.com/bsl). At some point, I will make the
+switch to [OpenTofu](https://opentofu.org/). Until that time, I will remain on Terraform v1.5.5 which is still under
+MPLv2.
+
 ## 🚀 Getting Started
 
 These instructions will walk you through tooling installation and setup on your local machine.
