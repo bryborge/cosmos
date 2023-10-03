@@ -1,11 +1,13 @@
-resource "aws_s3_bucket" "bucket" {
+resource "aws_s3_bucket" "website" {
   bucket = var.domain_name
 }
 
-# resource "aws_s3_bucket_policy" "website" {
-#   bucket = aws_s3_bucket.website.id
-#   policy = data.aws_iam_policy_document.website_policy.json 
-# }
+resource "aws_cloudfront_origin_access_identity" "oai" {}
+
+resource "aws_s3_bucket_policy" "website" {
+  bucket = aws_s3_bucket.website.id
+  policy = data.aws_iam_policy_document.website_policy.json
+}
 
 # resource "aws_s3_bucket_website_configuration" "website" {
 #   bucket = aws_s3_bucket.website.id
@@ -22,11 +24,6 @@ resource "aws_s3_bucket" "bucket" {
 # resource "aws_s3_bucket_acl" "website" {
 #     bucket = aws_s3_bucket.website.id
 #     acl = "private"
-# }
-
-# resource "aws_s3_bucket_policy" "website" {
-#   bucket = aws_s3_bucket.website.id
-#   policy = data.aws_iam_policy_document.website_policy.json 
 # }
 
 # resource "aws_s3_bucket_ownership_controls" "s3_bucket_acl_ownership" {
