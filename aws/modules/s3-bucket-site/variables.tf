@@ -18,12 +18,12 @@ variable "domain_name" {
   description = "The domain name for the website."
 }
 
-# variable "index_html" {
-#   type        = string
-#   description = "The name of the index document to serve as a static site (e.g., 'index.html')."
-# }
+variable "index_html" {
+  type        = string
+  description = "The name of the index document to serve as a static site (e.g., 'index.html')."
+}
 
-# variable "error_html" {
-#   type        = string
-#   description = "The name of the object key when a 4XX class error occurs (e.g., '404.html')."
-# }
+variable "error_html" {
+  type        = string
+  description = "The name of the object key when a 4XX class error occurs (e.g., '404.html')."
+}
