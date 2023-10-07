@@ -4,9 +4,9 @@ provider "aws" {
 }
 
 locals {
-  account_id  = "388372205874"
-  region      = "us-west-2"
-  env         = "production"
+  account_id = "388372205874"
+  region     = "us-west-2"
+  env        = "production"
 }
 
 module "s3_bucket_site" {
