@@ -28,7 +28,7 @@ variable "error_html" {
   description = "The name of the object key when a 4XX class error occurs (e.g., '404.html')."
 }
 
-variable "cloudfront_price_class" {
-  type        = string
-  description = "The price class for the cloudfront distribution."
-}
+# variable "cloudfront_price_class" {
+#   type        = string
+#   description = "The price class for the cloudfront distribution."
+# }
