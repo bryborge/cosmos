@@ -5,7 +5,6 @@ data "aws_iam_policy_document" "website_policy" {
       "s3:ListBucket"
     ]
     principals {
-      # identifiers = [aws_cloudfront_origin_access_identity.oai.iam_arn]
       type        = "AWS"
       identifiers = ["*"]
     }

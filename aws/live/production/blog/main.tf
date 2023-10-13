@@ -18,5 +18,4 @@ module "s3_bucket_site" {
   domain_name            = var.domain_name
   index_html             = var.index_html
   error_html             = var.error_html
-  # cloudfront_price_class = var.cloudfront_price_class
 }
