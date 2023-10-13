@@ -15,7 +15,7 @@ module "s3_bucket_site" {
   aws_account_id         = local.account_id
   aws_region             = local.region
   environment            = local.env
-  domain_name            = var.domain_name
+  bucket_name            = var.bucket_name
   index_html             = var.index_html
   error_html             = var.error_html
 }

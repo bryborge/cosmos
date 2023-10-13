@@ -13,7 +13,7 @@ variable "environment" {
   description = "The environment to deploy to."
 }
 
-variable "domain_name" {
+variable "bucket_name" {
   type        = string
   description = "The name of the s3 bucket."
 }

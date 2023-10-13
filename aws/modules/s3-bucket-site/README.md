@@ -56,7 +56,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_account_id"></a> [aws\_account\_id](#input\_aws\_account\_id) | The AWS account to deploy to. | `string` | n/a | yes |
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | The AWS region this is hosted in. | `string` | n/a | yes |
-| <a name="input_domain_name"></a> [domain\_name](#input\_domain\_name) | The domain name for the website. | `string` | n/a | yes |
+| <a name="input_bucket_name"></a> [bucket\_name](#input\_bucket\_name) | The name of the s3 bucket. | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | The environment to deploy to. | `string` | n/a | yes |
 | <a name="input_error_html"></a> [error\_html](#input\_error\_html) | The name of the object key when a 4XX class error occurs (e.g., '404.html'). | `string` | n/a | yes |
 | <a name="input_index_html"></a> [index\_html](#input\_index\_html) | The name of the index document to serve as a static site (e.g., 'index.html'). | `string` | n/a | yes |
