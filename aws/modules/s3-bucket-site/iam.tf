@@ -7,7 +7,7 @@ data "aws_iam_policy_document" "website_policy" {
 
     principals {
       type        = "AWS"
-      identifiers = ["*"]
+      identifiers = [aws_cloudfront_origin_access_identity.oai.iam_arn]
     }
 
     resources = [

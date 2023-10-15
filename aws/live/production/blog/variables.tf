@@ -37,8 +37,3 @@ variable "domain_name" {
   type        = string
   description = "The domain name."
 }
-
-variable "dns_record_type" {
-  type = string
-  description = "The type of DNS record to create."
-}
