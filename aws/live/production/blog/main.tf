@@ -19,6 +19,8 @@ module "s3_bucket_site" {
   index_html             = var.index_html
   error_html             = var.error_html
   cloudfront_price_class = var.cloudfront_price_class
+  domain_name            = var.domain_name
+  dns_record_type        = "A"
 }
 
 data "aws_iam_policy_document" "cicd_deployer" {
