@@ -13,9 +13,9 @@ variable "environment" {
   description = "The environment to deploy to."
 }
 
-variable "domain_name" {
+variable "bucket_name" {
   type        = string
-  description = "The domain name for the website."
+  description = "The name of the s3 bucket."
 }
 
 variable "index_html" {
@@ -28,7 +28,7 @@ variable "error_html" {
   description = "The name of the object key when a 4XX class error occurs (e.g., '404.html')."
 }
 
-# variable "cloudfront_price_class" {
-#   type        = string
-#   description = "The price class for the cloudfront distribution."
-# }
+variable "cloudfront_price_class" {
+  type        = string
+  description = "The price class for the cloudfront distribution."
+}
