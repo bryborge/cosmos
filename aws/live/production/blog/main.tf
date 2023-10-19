@@ -4,9 +4,10 @@ provider "aws" {
 }
 
 locals {
-  account_id = "388372205874"
-  region     = "us-west-2"
-  env        = "production"
+  account_id         = "388372205874"
+  region             = "us-west-2"
+  env                = "production"
+  cloudfront_dist_id = "E3E47UCVRC2WJ9"
 }
 
 module "s3_bucket_site" {
@@ -25,11 +26,16 @@ module "s3_bucket_site" {
 
 data "aws_iam_policy_document" "cicd_deployer" {
   statement {
-    actions = ["s3:*"]
+    actions = [
+      "s3:*",
+      "cloudfront:CreateInvalidation",
+      "cloudfront:GetDistribution",
+    ]
 
     resources = [
       "arn:aws:s3:::${var.bucket_name}/*",
-      "arn:aws:s3:::${var.bucket_name}"
+      "arn:aws:s3:::${var.bucket_name}",
+      "arn:aws:cloudfront::${local.account_id}:distribution/${cloudfront_dist_id}",
     ]
   }
 }
