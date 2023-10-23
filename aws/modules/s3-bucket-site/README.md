@@ -1,6 +1,10 @@
 # S3 Bucket Static Website
 
-Provisions the infrastructure resources for a static website hosted in a bucket on S3.
+Provisions the infrastructure resources for a static website hosted in a bucket on S3 with a Cloudfront distribution.
+
+## Prerequisites
+
+You must have a registered domain name that you purchased and own in Route53.
 
 ## Deployment
 
@@ -9,8 +13,8 @@ terragrunt init
 terragrunt apply
 ```
 
-You can verify the deployment succeeded and works as expected by copying an `index.html` file to the bucket and
-navigating to the bucket url in a browser:
+You can verify the S3 bucket deployment succeeded and works as expected by copying an `index.html` file to the bucket
+and navigating to the bucket url in a browser:
 
 ```sh
 mkdir deleteme
@@ -19,6 +23,17 @@ aws s3 sync deleteme s3://<your-bucket-name>/
 ```
 
 Visit: http://<your-bucket-name>.s3-website-us-west-2.amazonaws.com
+
+And to verify the domain certification (ACM) and Cloudfront distribution deployment succeeded, navigate the your domain
+url in a browser:
+
+Visit: https://<domain-name>
+
+If that doesn't work, you can try invalidating the Cloudfront distribution from the command line:
+
+```sh
+aws cloudfront create-invalidation --distribution-id <cloudfront-distribution-id> --paths "/*"
+```
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
