@@ -4,6 +4,6 @@ resource "aws_default_vpc" "default" {
     Region      = var.aws_region
     Environment = var.environment
     GithubRepo  = "cosmos"
-    GithubOrg   = "sonofborge"
+    GithubOrg   = "bryborge"
   }
 }

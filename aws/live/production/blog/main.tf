@@ -7,7 +7,7 @@ locals {
   account_id         = "388372205874"
   region             = "us-west-2"
   env                = "production"
-  cloudfront_dist_id = "E3E47UCVRC2WJ9"
+  cloudfront_dist_id = "E2IV2DY4NDYVVW"
 }
 
 module "s3_bucket_site" {
