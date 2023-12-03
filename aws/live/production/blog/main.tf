@@ -35,7 +35,7 @@ data "aws_iam_policy_document" "cicd_deployer" {
     resources = [
       "arn:aws:s3:::${var.bucket_name}/*",
       "arn:aws:s3:::${var.bucket_name}",
-      "arn:aws:cloudfront::${local.account_id}:distribution/${cloudfront_dist_id}",
+      "arn:aws:cloudfront::${local.account_id}:distribution/${local.cloudfront_dist_id}",
     ]
   }
 }
