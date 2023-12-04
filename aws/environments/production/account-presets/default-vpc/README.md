@@ -1,7 +1,6 @@
-# Account Baseline
+# Virtual Private Cloud (VPC) - Default
 
-This service contains the Terraform for establishing a standard AWS account baseline. Every new AWS account should run
-this service once.
+Creates the default VPC if none exists, or adopts the default VPC if it already exists.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements

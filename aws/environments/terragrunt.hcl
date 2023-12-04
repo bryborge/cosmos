@@ -4,7 +4,7 @@ locals {
 
   # Parse the file path we're in to read the env name: e.g., env will be "development" in the development folder,
   # "staging" in the staging folder, etc.
-  parsed = regex(".*/live/(?P<env>.*?)/.*", get_terragrunt_dir())
+  parsed = regex(".*/environments/(?P<env>.*?)/.*", get_terragrunt_dir())
   env    = local.parsed.env
 
   # Fetch the region from the environment automatically in the following order:
@@ -32,7 +32,6 @@ remote_state {
   config = {
     encrypt        = true
     bucket         = local.bucket_name
-    // key            = "iac/${local.env}/${local.account_id}/${local.region}/terraform.tfstate"
     key            = "iac/${path_relative_to_include()}/${local.account_id}/${local.region}/terraform.tfstate"
     region         = local.region
     dynamodb_table = local.dynamodb_table

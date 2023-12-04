@@ -10,7 +10,7 @@ locals {
 }
 
 module "default_vpc" {
-  source = "../../../modules/default-vpc"
+  source = "../../../../modules/default-vpc"
 
   aws_account_id = local.account_id
   aws_region     = local.region
