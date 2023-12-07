@@ -24,32 +24,32 @@ module "s3_bucket_site" {
   dns_record_type        = "A"
 }
 
-data "aws_iam_policy_document" "cicd_deployer" {
-  statement {
-    actions = [
-      "s3:*",
-      "cloudfront:CreateInvalidation",
-      "cloudfront:GetDistribution",
-    ]
+# data "aws_iam_policy_document" "cicd_deployer" {
+#   statement {
+#     actions = [
+#       "s3:*",
+#       "cloudfront:CreateInvalidation",
+#       "cloudfront:GetDistribution",
+#     ]
 
-    resources = [
-      "arn:aws:s3:::${var.bucket_name}/*",
-      "arn:aws:s3:::${var.bucket_name}",
-      "arn:aws:cloudfront::${local.account_id}:distribution/${local.cloudfront_dist_id}",
-    ]
-  }
-}
+#     resources = [
+#       "arn:aws:s3:::${var.bucket_name}/*",
+#       "arn:aws:s3:::${var.bucket_name}",
+#       "arn:aws:cloudfront::${local.account_id}:distribution/${local.cloudfront_dist_id}",
+#     ]
+#   }
+# }
 
-resource "aws_iam_user" "cicd_deployer" {
-  name = "cicd_deployer"
-}
+# resource "aws_iam_user" "cicd_deployer" {
+#   name = "cicd_deployer"
+# }
 
-resource "aws_iam_access_key" "cicd_deployer" {
-  user = aws_iam_user.cicd_deployer.name
-}
+# resource "aws_iam_access_key" "cicd_deployer" {
+#   user = aws_iam_user.cicd_deployer.name
+# }
 
-resource "aws_iam_user_policy" "cicd_deployer" {
-  name   = "cicd_deployer_user_policy"
-  user   = aws_iam_user.cicd_deployer.name
-  policy = data.aws_iam_policy_document.cicd_deployer.json
-}
+# resource "aws_iam_user_policy" "cicd_deployer" {
+#   name   = "cicd_deployer_user_policy"
+#   user   = aws_iam_user.cicd_deployer.name
+#   policy = data.aws_iam_policy_document.cicd_deployer.json
+# }
