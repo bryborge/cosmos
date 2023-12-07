@@ -32,9 +32,9 @@ resource "aws_iam_user_policy" "circleci_assume_role" {
 }
 
 # TODO: remove in favor of OIDC
-# resource "aws_iam_access_key" "circleci" {
-#   user = aws_iam_user.circleci.name
-# }
+resource "aws_iam_access_key" "circleci" {
+  user = aws_iam_user.circleci.name
+}
 
 # CircleCI - Context
 resource "circleci_context" "main" {
@@ -47,17 +47,17 @@ resource "circleci_context_environment_variable" "aws_account_id" {
   context_id = circleci_context.main.id
 }
 
-# resource "circleci_context_environment_variable" "iam_user_key_id" {
-#   variable   = "AWS_ACCESS_KEY_ID"
-#   value      = aws_iam_access_key.circleci.id
-#   context_id = circleci_context.main.id
-# }
+resource "circleci_context_environment_variable" "iam_user_key_id" {
+  variable   = "AWS_ACCESS_KEY_ID"
+  value      = aws_iam_access_key.circleci.id
+  context_id = circleci_context.main.id
+}
 
-# resource "circleci_context_environment_variable" "iam_user_key_secret" {
-#   variable   = "AWS_SECRET_ACCESS_KEY"
-#   value      = aws_iam_access_key.circleci.secret
-#   context_id = circleci_context.main.id
-# }
+resource "circleci_context_environment_variable" "iam_user_key_secret" {
+  variable   = "AWS_SECRET_ACCESS_KEY"
+  value      = aws_iam_access_key.circleci.secret
+  context_id = circleci_context.main.id
+}
 
 resource "circleci_context_environment_variable" "region" {
   variable   = "AWS_DEFAULT_REGION"
