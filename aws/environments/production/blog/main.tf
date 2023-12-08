@@ -1,13 +1,13 @@
-provider "aws" {
-  region              = var.aws_region
-  allowed_account_ids = [var.aws_account_id]
-}
-
 locals {
   account_id         = "388372205874"
   region             = "us-west-2"
   env                = "production"
   cloudfront_dist_id = "E2IV2DY4NDYVVW"
+}
+
+provider "aws" {
+  region              = var.aws_region
+  allowed_account_ids = [var.aws_account_id]
 }
 
 module "s3_bucket_site" {
