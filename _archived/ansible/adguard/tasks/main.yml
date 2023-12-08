@@ -1,5 +1,0 @@
----
-- name: Install Adguard Home via Snap
-  community.general.snap:
-    name: adguard-home
-    state: present
