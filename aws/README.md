@@ -11,7 +11,7 @@ components that make up my service infrastructure. Modules are sharable and re-u
 
 ```sh
 .
-├── live                 # All of the various "live" environments I maintain on the AWS platform.
+├── environments         # All of the various "live" environments I maintain on the AWS platform.
 │   ├── development      # All of the "services" deployed within the specified environment.
 │   │   ├── service-1    #   - A "service" is essentially a "root module" in Terraform parlance.
 │   │   └── service-n    #   - A "service" is often comprised of several infrastructure components, or "sub-modules".
@@ -42,8 +42,11 @@ These instructions will walk you through tooling installation and setup on your 
 ### ✅ Prerequisites
 
 *   [Homebrew](https://brew.sh/) - The missing package manager for macOS.
-*   [tfenv](https://github.com/tfutils/tfenv)
-*   [Terragrunt](https://terragrunt.gruntwork.io/)
+*   [tfenv](https://github.com/tfutils/tfenv) - Terraform version manager.
+*   [Terragrunt](https://terragrunt.gruntwork.io/) - A thin wrapper that provides extra tools for keeping configurations
+    DRY, working with multiple Terraform modules, and managing remote state.
+*   [terraform-docs](https://github.com/terraform-docs/terraform-docs/) - A utility to generate documentation from
+    Terraform modules in various output formats.
 
 ### 💻 Installing
 
