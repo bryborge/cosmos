@@ -1,6 +1,6 @@
 locals {
   tags = {
-    Name        = "Github Actions (CI/CD)"
+    Name        = "Github Actions - CI/CD"
     Region      = var.aws_region
     Environment = var.environment
     GithubRepo  = "cosmos"
@@ -35,8 +35,8 @@ resource "aws_iam_user" "github_cicd" {
 
 resource "aws_iam_user_policy" "github_cicd_assume_role" {
   name   = "account-access"
-  user   = aws_iam_user.github_cicd_role.name
-  policy = data.aws_iam_policy_document.github-cicd-role.json
+  user   = aws_iam_user.github_cicd.name
+  policy = data.aws_iam_policy_document.github_cicd.json
 }
 
 # TODO: remove in favor of OIDC

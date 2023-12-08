@@ -12,13 +12,3 @@ variable "environment" {
   type        = string
   description = "The environment to deploy to."
 }
-
-variable "bucket_name" {
-  type        = string
-  description = ""
-}
-
-variable "cloudfront_dist_id" {
-  type        = string
-  description = ""
-}
