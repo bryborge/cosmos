@@ -1,6 +1,20 @@
+locals {
+  tags = {
+    Name        = "CircleCI"
+    Region      = var.aws_region
+    Environment = var.environment
+    GithubRepo  = "cosmos"
+    GithubOrg   = "bryborge"
+  }
+}
+
 provider "aws" {
   region              = var.aws_region
   allowed_account_ids = [var.aws_account_id]
+
+  default_tags {
+    tags = local.tags
+  }
 }
 
 provider "circleci" {
@@ -16,7 +30,7 @@ resource "aws_iam_role" "pipeline" {
 
   inline_policy {
     name   = "${var.environment}-${var.aws_region}-circleci-policy"
-    policy = templatefile("../../../../modules/iam/policies/ci.tmpl", {})
+    policy = templatefile("../../../../../modules/iam/policies/ci.tmpl", {})
   }
 }
 
