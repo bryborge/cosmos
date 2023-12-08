@@ -1,7 +1,0 @@
----
-- name: Setup 3D Printer Server
-  hosts: threedee
-  gather_facts: true
-  become: true
-  roles:
-    - octoprint
