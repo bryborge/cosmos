@@ -1,21 +1,28 @@
+locals {
+  tags = {
+    Name        = "Personal Blog"
+    Region      = var.aws_region
+    Environment = var.environment
+    GithubRepo  = "cosmos"
+    GithubOrg   = "bryborge"
+  }
+}
+
 provider "aws" {
   region              = var.aws_region
   allowed_account_ids = [var.aws_account_id]
-}
 
-locals {
-  account_id         = "388372205874"
-  region             = "us-west-2"
-  env                = "production"
-  cloudfront_dist_id = "E2IV2DY4NDYVVW"
+  default_tags {
+    tags = local.tags
+  }
 }
 
 module "s3_bucket_site" {
   source = "../../../modules/s3-bucket-site"
 
-  aws_account_id         = local.account_id
-  aws_region             = local.region
-  environment            = local.env
+  aws_account_id         = var.aws_account_id
+  aws_region             = var.aws_region
+  environment            = var.environment
   bucket_name            = var.bucket_name
   index_html             = var.index_html
   error_html             = var.error_html
@@ -35,7 +42,7 @@ module "s3_bucket_site" {
 #     resources = [
 #       "arn:aws:s3:::${var.bucket_name}/*",
 #       "arn:aws:s3:::${var.bucket_name}",
-#       "arn:aws:cloudfront::${local.account_id}:distribution/${local.cloudfront_dist_id}",
+#       "arn:aws:cloudfront::${var.aws_account_id}:distribution/${var.cloudfront_dist_id}",
 #     ]
 #   }
 # }
