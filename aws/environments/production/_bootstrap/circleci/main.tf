@@ -16,7 +16,7 @@ resource "aws_iam_role" "pipeline" {
 
   inline_policy {
     name   = "${var.environment}-${var.aws_region}-circleci-policy"
-    policy = templatefile("../../../../modules/iam/policies/ci.tmpl", {})
+    policy = templatefile("../../../../modules/iam/policies/circleci.tmpl", {})
   }
 }
 
