@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "cicd_deployer" {
+data "aws_iam_policy_document" "blog_gh_cicd" {
   statement {
     actions = [
       "s3:*",
