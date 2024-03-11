@@ -1,0 +1,14 @@
+---
+- name: Initialize hardware
+  hosts: octoprint
+  gather_facts: true
+  become: true
+  roles:
+    - raspberrypi
+
+- name: Download and install Octoprint
+  hosts: octoprint
+  gather_facts: true
+  become: true
+  roles:
+    - install
