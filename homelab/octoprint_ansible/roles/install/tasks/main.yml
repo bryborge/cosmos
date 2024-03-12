@@ -1,5 +1,5 @@
 ---
-- name: Ensure "{{ octoprint_path }}" directory exists
+- name: Ensure Octopath directory exists
   ansible.builtin.file:
     path: "{{ octoprint_path }}"
     state: directory
@@ -14,14 +14,16 @@
   ansible.builtin.command:
     cmd: virtualenv venv
     chdir: "{{ octoprint_path }}"
+    creates: "{{ octoprint_path }}/venv/bin/activate"
+  register: venv_created
+  changed_when: venv_created.rc == 0
 
-- name: Activate Python virtualenv as venv
-  ansible.builtin.shell: |
-    source "{{ octoprint_path }}"/venv/bin/activate
-    which python
-  args:
+- name: Check which Python is being used
+  ansible.builtin.command:
+    cmd: "{{ octoprint_path }}/venv/bin/python -c 'import sys; print(sys.executable)'"
     chdir: "{{ octoprint_path }}"
-    executable: /bin/bash
+  register: python_exec
+  changed_when: false
 
 - name: Upgrade pip and install Octoprint within the virtualenv
   ansible.builtin.shell: |
@@ -31,11 +33,12 @@
   args:
     chdir: "{{ octoprint_path }}"
     executable: /bin/bash
+  changed_when: venv_created.rc == 0
 
 - name: Add user to groups
   ansible.builtin.user:
     name: "{{ ansible_user }}"
-    groups: 
+    groups:
       - tty
       - dialout
     append: true
