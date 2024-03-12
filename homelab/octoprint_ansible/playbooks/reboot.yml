@@ -1,5 +1,5 @@
 ---
-- name: Reboot octoprint server
+- name: Reboot Octoprint server
   hosts: octoprint
   gather_facts: true
   tasks:

@@ -1,0 +1,35 @@
+---
+- name: Create systemd service file for Octoprint
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/octoprint.service
+    content: |
+      [Unit]
+      Description=Octoprint server
+      After=network.target
+
+      [Service]
+      Type=simple
+      User={{ ansible_user }}
+      ExecStart={{ octoprint_path }}/venv/bin/octoprint serve
+      Restart=always
+      Environment=HOME=/home/{{ ansible_user }}/.octoprint
+
+      [Install]
+      WantedBy=multi-user.target
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Reload systemd to apply new service
+  ansible.builtin.systemd:
+    daemon_reload: true
+
+- name: Enable Octoprint service
+  ansible.builtin.systemd:
+    name: octoprint
+    enabled: true
+
+- name: Start Octoprint service
+  ansible.builtin.systemd:
+    name: octoprint
+    state: started

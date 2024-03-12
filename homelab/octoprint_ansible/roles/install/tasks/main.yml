@@ -23,7 +23,7 @@
     chdir: "{{ octoprint_path }}"
     executable: /bin/bash
 
-- name: Upgrade pip and install OctoPrint within the virtualenv
+- name: Upgrade pip and install Octoprint within the virtualenv
   ansible.builtin.shell: |
     source "{{ octoprint_path }}"/venv/bin/activate
     pip install --upgrade pip
