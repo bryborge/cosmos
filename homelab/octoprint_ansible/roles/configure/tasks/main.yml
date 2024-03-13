@@ -1,4 +1,5 @@
 ---
+# Startup Automatically
 - name: Create systemd service file for Octoprint
   ansible.builtin.copy:
     dest: /etc/systemd/system/octoprint.service
@@ -33,3 +34,23 @@
   ansible.builtin.systemd:
     name: octoprint
     state: started
+
+# Install / Setup webcam
+- name: Clone mjpg-streamer repository
+  ansible.builtin.git:
+    repo: 'https://github.com/jacksonliam/mjpg-streamer.git'
+    dest: "/home/{{ ansible_user }}/mjpg-streamer"
+    version: 'master'
+  register: git_clone
+  changed_when: git_clone == 0
+
+- name: Change directory, set LD_LIBRARY_PATH, and run make
+  ansible.builtin.shell: |
+    export LD_LIBRARY_PATH=.
+    make
+  args:
+    chdir: "/home/{{ ansible_user }}/mjpg-streamer/mjpg-streamer-experimental"
+    executable: /bin/bash
+  environment:
+    LD_LIBRARY_PATH: "."
+  changed_when: git_clone == 0

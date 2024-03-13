@@ -64,6 +64,14 @@ ansible-playbook playbooks/update.yml
 ansible-playbook playbooks/reboot.yml
 ```
 
+## Octoprint Webcam
+
+To get the USB Logitech webcam working for both still images and streaming, add the following values under
+`Settings > Plugins > Classic Webcam` in the Octoprint UI:
+
+**Stream URL:** `http://<server-ip>:8080/?action=stream`
+**Snapshot URL:** `http://127.0.0.1:8080/?action=snapshot`
+
 ## 📚 Resources
 
 *   [Official Ansible Documentation](https://docs.ansible.com/)
