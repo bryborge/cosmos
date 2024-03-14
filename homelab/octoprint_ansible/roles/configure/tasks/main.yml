@@ -1,5 +1,5 @@
 ---
-# Startup Automatically
+# Octoprint Service - Startup Automatically
 - name: Create systemd service file for Octoprint
   ansible.builtin.copy:
     dest: /etc/systemd/system/octoprint.service
@@ -35,7 +35,8 @@
     name: octoprint
     state: started
 
-# Install / Setup webcam
+
+# Webcam - Install / Setup
 - name: Clone mjpg-streamer repository
   ansible.builtin.git:
     repo: 'https://github.com/jacksonliam/mjpg-streamer.git'
@@ -51,6 +52,39 @@
   args:
     chdir: "/home/{{ ansible_user }}/mjpg-streamer/mjpg-streamer-experimental"
     executable: /bin/bash
+    creates: "/home/{{ ansible_user }}/mjpg-streamer/mjpg-streamer-experimental/mjpg_streamer"
   environment:
     LD_LIBRARY_PATH: "."
-  changed_when: git_clone == 0
+
+
+# Webcam - Startup Automatically
+- name: Create mjpg-streamer systemd service file
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/mjpg-streamer.service
+    content: |
+      [Unit]
+      Description=mjpg-streamer service
+      After=network.target
+
+      [Service]
+      Type=simple
+      ExecStart=/home/{{ ansible_user }}/mjpg-streamer/mjpg-streamer-experimental/mjpg_streamer -i "/home/{{ ansible_user }}/mjpg-streamer/mjpg-streamer-experimental/input_uvc.so" -o "/home/{{ ansible_user }}/mjpg-streamer/mjpg-streamer-experimental/output_http.so"
+      WorkingDirectory=/home/{{ ansible_user }}/mjpg-streamer/mjpg-streamer-experimental/
+      Restart=always
+      User={{ ansible_user }}
+
+      [Install]
+      WantedBy=multi-user.target
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Reload systemd to recognize new service
+  ansible.builtin.systemd:
+    daemon_reload: true
+
+- name: Enable and start mjpg-streamer service
+  ansible.builtin.systemd:
+    name: mjpg-streamer
+    enabled: true
+    state: started
