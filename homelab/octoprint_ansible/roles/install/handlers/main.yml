@@ -1,0 +1,11 @@
+---
+- name: Upgrade pip and install octoprint
+  ansible.builtin.shell: |
+    source "{{ octoprint_path }}/venv/bin/activate"
+    pip install --upgrade pip
+    pip install https://get.octoprint.org/latest
+  args:
+    chdir: "{{ octoprint_path }}"
+    executable: /bin/bash
+  listen: "pip and octoprint update"
+  changed_when: venv_created.rc == 0
