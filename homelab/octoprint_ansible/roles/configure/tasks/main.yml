@@ -68,7 +68,9 @@
 
       [Service]
       Type=simple
-      ExecStart=/home/{{ ansible_user }}/mjpg-streamer/mjpg-streamer-experimental/mjpg_streamer -i "/home/{{ ansible_user }}/mjpg-streamer/mjpg-streamer-experimental/input_uvc.so" -o "/home/{{ ansible_user }}/mjpg-streamer/mjpg-streamer-experimental/output_http.so"
+      ExecStart=/home/{{ ansible_user }}/mjpg-streamer/mjpg-streamer-experimental/mjpg_streamer \
+        -i "/home/{{ ansible_user }}/mjpg-streamer/mjpg-streamer-experimental/input_uvc.so" \
+        -o "/home/{{ ansible_user }}/mjpg-streamer/mjpg-streamer-experimental/output_http.so"
       WorkingDirectory=/home/{{ ansible_user }}/mjpg-streamer/mjpg-streamer-experimental/
       Restart=always
       User={{ ansible_user }}

@@ -16,7 +16,7 @@
     chdir: "{{ octoprint_path }}"
     creates: "{{ octoprint_path }}/venv/bin/activate"
   register: venv_created
-  changed_when: venv_created.rc == 0
+  notify: "pip and octoprint update"
 
 - name: Check which Python is being used
   ansible.builtin.command:
@@ -24,16 +24,6 @@
     chdir: "{{ octoprint_path }}"
   register: python_exec
   changed_when: false
-
-- name: Upgrade pip and install Octoprint within the virtualenv
-  ansible.builtin.shell: |
-    source "{{ octoprint_path }}"/venv/bin/activate
-    pip install --upgrade pip
-    pip install https://get.octoprint.org/latest
-  args:
-    chdir: "{{ octoprint_path }}"
-    executable: /bin/bash
-  changed_when: venv_created.rc == 0
 
 - name: Add user to groups
   ansible.builtin.user:
