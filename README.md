@@ -7,7 +7,7 @@
     <i>"If you wish to make an 🍎 🥧 from scratch, you must first invent the universe."</i> -- Carl Sagan
     <br />
     <br />
-    <a href="https://github.com/sonofborge/cosmos/blob/main/README.md">
+    <a href="https://github.com/bryborge/cosmos/blob/main/README.md">
       <strong>Explore the docs »</strong>
     </a>
   </p>
