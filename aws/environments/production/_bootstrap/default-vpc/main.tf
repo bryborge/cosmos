@@ -1,6 +1,7 @@
 locals {
+  cidr_block_prefix = "172.31."
+
   tags = {
-    Name        = "Default VPC"
     Region      = var.aws_region
     Environment = var.environment
     GithubRepo  = "cosmos"
@@ -18,19 +19,23 @@ provider "aws" {
 }
 
 ################################################################################
-#                               DEFAULT VPC
+#                                  DEFAULT VPC
 ################################################################################
 
-resource "aws_default_vpc" "default_vpc" {}
+resource "aws_default_vpc" "default_vpc" {
+  tags = {
+    Name = "Default VPC"
+  }
+}
 
 ################################################################################
-#                             DEFAULT SUBNETS
+#                                DEFAULT SUBNETS
 ################################################################################
 
 resource "aws_subnet" "default_subnet_1" {
-  vpc_id                  = "vpc-0b5fe43c706844ec9"
-  cidr_block              = "172.31.0.0/20"
-  availability_zone       = "us-west-2c"
+  vpc_id                  = aws_default_vpc.default_vpc.id
+  cidr_block              = "${local.cidr_block_prefix}0.0/20"
+  availability_zone       = "${var.aws_region}c"
   map_public_ip_on_launch = true
 
   tags = {
@@ -39,9 +44,9 @@ resource "aws_subnet" "default_subnet_1" {
 }
 
 resource "aws_subnet" "default_subnet_2" {
-  vpc_id                  = "vpc-0b5fe43c706844ec9"
-  cidr_block              = "172.31.16.0/20"
-  availability_zone       = "us-west-2b"
+  vpc_id                  = aws_default_vpc.default_vpc.id
+  cidr_block              = "${local.cidr_block_prefix}16.0/20"
+  availability_zone       = "${var.aws_region}b"
   map_public_ip_on_launch = true
 
   tags = {
@@ -50,9 +55,9 @@ resource "aws_subnet" "default_subnet_2" {
 }
 
 resource "aws_subnet" "default_subnet_3" {
-  vpc_id                  = "vpc-0b5fe43c706844ec9"
-  cidr_block              = "172.31.32.0/20"
-  availability_zone       = "us-west-2a"
+  vpc_id                  = aws_default_vpc.default_vpc.id
+  cidr_block              = "${local.cidr_block_prefix}32.0/20"
+  availability_zone       = "${var.aws_region}a"
   map_public_ip_on_launch = true
 
   tags = {
@@ -61,12 +66,107 @@ resource "aws_subnet" "default_subnet_3" {
 }
 
 resource "aws_subnet" "default_subnet_4" {
-  vpc_id                  = "vpc-0b5fe43c706844ec9"
-  cidr_block              = "172.31.48.0/20"
-  availability_zone       = "us-west-2d"
+  vpc_id                  = aws_default_vpc.default_vpc.id
+  cidr_block              = "${local.cidr_block_prefix}48.0/20"
+  availability_zone       = "${var.aws_region}d"
   map_public_ip_on_launch = true
 
   tags = {
     Name = "Default Subnet 4"
+  }
+}
+
+################################################################################
+#                             DEFAULT NETWORK ACL
+################################################################################
+
+resource "aws_default_network_acl" "default_network_acl" {
+  default_network_acl_id = aws_default_vpc.default_vpc.default_network_acl_id
+
+  ingress {
+    protocol   = -1
+    rule_no    = 100
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 0
+  }
+
+  egress {
+    protocol   = -1
+    rule_no    = 100
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 0
+  }
+
+  lifecycle {
+    ignore_changes = [subnet_ids]
+  }
+
+  tags = {
+    Name = "Default NACL"
+  }
+}
+
+################################################################################
+#                            DEFAULT SECURITY GROUP
+################################################################################
+
+resource "aws_default_security_group" "default_sg" {
+  vpc_id                 = aws_default_vpc.default_vpc.id
+  revoke_rules_on_delete = false
+
+  ingress {
+    protocol  = -1
+    self      = true
+    from_port = 0
+    to_port   = 0
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "Default SG"
+  }
+}
+
+################################################################################
+#                           DEFAULT INTERNET GATEWAY
+################################################################################
+
+resource "aws_internet_gateway" "default_gw" {
+  vpc_id = aws_default_vpc.default_vpc.id
+
+  tags = {
+    Name = "Default IGW"
+  }
+}
+
+################################################################################
+#                             DEFAULT ROUTE TABLE
+################################################################################
+
+resource "aws_default_route_table" "default_rtb" {
+  default_route_table_id = aws_default_vpc.default_vpc.default_route_table_id
+
+  tags = {
+    Name = "Default RTB"
+  }
+}
+
+################################################################################
+#                           DEFAULT DHCP OPTION SET
+################################################################################
+
+resource "aws_default_vpc_dhcp_options" "default_dhcp_opt" {
+  tags = {
+    Name = "Default DHCP Option Set"
   }
 }
