@@ -24,14 +24,14 @@ resource "aws_db_instance" "rds" {
 }
 
 resource "aws_security_group" "rds" {
-  vpc_id      = "${aws_vpc.vpc.id}"
-  # name        = "${var.service_name}_rds_security_group"
+  vpc_id      = aws_vpc.vpc.id
+  name        = "${var.service_name}_rds_security_group"
+  description = "${var.service_name} security group"
 
   # Private: Only allow traffic from the web server.
   ingress {
     protocol  = "tcp"
-    # self      = true
-    cidr_blocks = ["97.115.77.69/32"]
+    self      = true
     from_port = 5432
     to_port   = 5432
   }
