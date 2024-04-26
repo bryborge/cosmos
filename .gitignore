@@ -1,13 +1,10 @@
-# SOPS
-## vscode extension: https://github.com/signageos/vscode-sops
-*.decrypted~*
-
 # Terraform
 **/.terraform
 *.tfstate
 *.tfstate.*
 .terragrunt-cache
 backend.tf
+decrypted.tfvars
 
 # Misc
 *.log
