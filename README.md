@@ -43,6 +43,49 @@ used to manage it, and how to use them.
     >
     > -- Red Hat ([Source article](https://www.redhat.com/en/topics/automation/what-is-infrastructure-as-code-iac))
 
-## ⭐ License
+## 🔧 Tooling
+
+*   [Ansible](https://www.ansible.com/) - a radically simple IT automation platform that makes your applications and
+    systems easier to deploy and maintain.
+*   [Terraform](https://www.terraform.io/) - Infrastructure automation to provision and manage resources in any cloud or data center.
+*   [Secrets OPerationS (SOPS)](https://github.com/mozilla/sops) - Simple and flexible tool for managing secrets.
+*   [Age](https://github.com/FiloSottile/age) - A simple, modern and secure encryption tool (and Go library) with small
+    explicit keys, no config options, and UNIX-style composability.
+
+## 🔐 Security / Secrets Management
+
+TODO: Add overview of secrets management in general and why it's important, considerations, SOPs and Age, and alternatives.
+
+## 🔤 Naming Convention
+
+I use the following convention to name my compute where possible:
+
+*   **Platform**
+    *   `HLB` = Homelab
+    *   `AWS` = Amazon Web Services
+    *   `GCP` = Google Cloud Platform
+    *   `MAZ` = Microsoft Azure
+*   **Compute Type**
+    *   `P` = Physical machine
+    *   `V` = Virtual machine
+*   **Configuration**
+    *   `S` = Standalone
+    *   `C` = Cluster
+*   **Environment**
+    *   `D` = Development
+    *   `T` = Test
+    *   `P` = Production
+*   **Sequential ID**
+    *   `NNN` = (ex: `001`, `002`, ... `100`)
+
+### Examples
+
+*   `HLB-PSD-001` - A **homelab**-hosted (`HLB`) **physical** machine (`P`) in a **standalone** (`S`) configuration used
+    for **development** (`D`) environment workloads.
+
+*   `AWS-VCP-666` - An **AWS**-hosted (`AWS`) **virtual** machine (`V`) in a **cluster** (`C`) configuration used for
+    **production** (`P`) environment workloads.
+
+## 🪪 License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.

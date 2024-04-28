@@ -2,46 +2,29 @@
 
 All the Infrastructure as Code (IaC) for my Homelab lives here.
 
-## Overview
+## 📋 Overview
 
-*   Kubernetes Cluster (k3s)
-*   3D Printer Server
+### 💽 Software
 
-### Hardware
+*   Kubernetes Cluster - [K3s](https://k3s.io/)
+*   3D Printer Server - [Octoprint](https://octoprint.org/)
+*   NAS Server - [TrueNAS SCALE](https://www.truenas.com/truenas-scale/)
 
-*   Raspberry Pi 4
+### ⚙️ Hardware
 
-### Naming Convention
+*   K3s cluster
+    *   Raspberry Pi 4, 8gb model
+    *   **SSD:** 250gb (system / storage)
+*   Octoprint server
+    *   Raspberry Pi 4, 2gb model
+*   TrueNAS Server
+    *   **CPU:** 4 Cores / 8 Threads (i7-4790k)
+    *   **MEM:** 32GB DDR3
+    *   **SSD:** 250GB (system)
+    *   **SSD:** 500GB (general host storage)
+    *   **HDD:** 4x 8TB (RAIDZ2)
 
-I use the following convention to name my servers:
-
-*   Platform
-    *   `HLB` = Homelab
-    *   `AWS` = Amazon Web Services
-    *   `GCP` = Google Cloud Platform
-    *   `MAZ` = Microsoft Azure
-*   Compute Type
-    *   `P` = Physical machine
-    *   `V` = Virtual machine
-*   Configuration
-    *   `S` = Standalone
-    *   `C` = Cluster
-*   Environment
-    *   `D` = Development
-    *   `T` = Test
-    *   `P` = Production
-*   Sequential ID
-    *   `NNN` = (ex: `001`, `002`, ... `100`)
-
-#### Examples
-
-*   `HLB-PSD-001` - A **homelab**-hosted (`HLB`) **physical** machine (`P`) in a **standalone** (`S`) configuration used
-    for **development** (`D`) environment workloads.
-
-*   `AWS-VCP-666` - An **AWS**-hosted (`AWS`) **virtual** machine (`V`) in a **cluster** (`C`) configuration used for
-    **production** (`P`) environment workloads.
-
-### 🥧 Raspberry Pi Systems
+## 🥧 Raspberry Pi Systems
 
 I have several Raspberry Pis deployed throughout my Homelab running a variety of workloads. In order to simplify the
 management of these systems, I use the same operating system installed using the same imager software and settings
@@ -73,38 +56,6 @@ whenever possible. This provides a reliable/repeatable baseline by which I can p
     7.  Enable Telemetry
 2.  Insert newly flashed drive into the raspberry pi and power on. Give it 1-2 minutes to boot.
 3.  Test SSH connection: `ssh <username>@<hostname>`
-
-## 🔧 Tooling
-
-*   [Ansible](https://www.ansible.com/) - a radically simple IT automation platform that makes your applications and
-    systems easier to deploy and maintain.
-*   [Secrets OPerationS (SOPS)](https://github.com/mozilla/sops) - Simple and flexible tool for managing secrets.
-*   [age](https://github.com/FiloSottile/age) - A simple, modern and secure encryption tool (and Go library) with small
-    explicit keys, no config options, and UNIX-style composability.
-
-## Ansible
-
-### Useful commands
-
-*   Encrypt a secrets file called `secrets.sops.yml`
-
-    ```sh
-    sops \
-        --encrypt \
-        --age <age-key> \
-        --encrypted-regex '^(cf_api_token|cf_zone_id)$' \
-        --in-place secrets.sops.yml
-    ```
-
-*   Decrypt a secrets file called `secrets.sops.yml`
-
-    ```sh
-    sops \
-        --decrypt \
-        --age <age-key> \
-        --encrypted-regex '^(cf_api_token|cf_zone_id)$' \
-        --in-place secrets.sops.yml
-    ```
 
 ## 🧠 Additional Materials
 
