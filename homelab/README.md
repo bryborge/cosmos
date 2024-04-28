@@ -57,6 +57,36 @@ whenever possible. This provides a reliable/repeatable baseline by which I can p
 2.  Insert newly flashed drive into the raspberry pi and power on. Give it 1-2 minutes to boot.
 3.  Test SSH connection: `ssh <username>@<hostname>`
 
+## TrueNAS SCALE
+
+The home for all-things "data" in my homelab. Here are some reasons I chose this platform:
+
+*   Debian-based OS
+*   Rich "app" ecosystem ([Truecharts](https://truecharts.org/))
+*   Several virtualization options
+    *   Can run and manage VMs
+    *   Apps are hosted in a kubernetes environment (K3s) on the system
+
+### General Setup
+
+After installing the OS, here are the things I like to do to setup and manage the system.
+
+1.  Enable MFA
+2.  Create non-privileged user(s)
+3.  Create and/or Import Storage Pools
+4.  Create the Datasets
+5.  Create SMB and NFS shares
+    1.  Modify ACLs for these shares
+6.  Configure Data Protection
+    1.  Scrub tasks on each pool
+    2.  Periodic snapshot tasks
+    3.  SMART tests
+7.  Add the Truecharts catalog
+    1.  https://github.com/truecharts/catalog
+8.  Move TrueNAS UI to be served on ports 81 and 444
+9.  Install and configure Traefik or Nginx Proxy Manager
+10. Point DNS to *local* IP address (as I do NOT want to make this server accessible to the public internet but I DO want to use my own domain name)
+
 ## 🧠 Additional Materials
 
 *   [Enable SSH on Raspberry Pi when you flash the SD card](https://roboticsbackend.com/enable-ssh-on-raspberry-pi-raspbian/#New_feature_Enable_SSH_directly_when_you_flash_the_SD_card)
