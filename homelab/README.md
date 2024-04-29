@@ -2,46 +2,29 @@
 
 All the Infrastructure as Code (IaC) for my Homelab lives here.
 
-## Overview
+## 📋 Overview
 
-*   Kubernetes Cluster (k3s)
-*   3D Printer Server
+### 💽 Software
 
-### Hardware
+*   Kubernetes Cluster - [K3s](https://k3s.io/)
+*   3D Printer Server - [Octoprint](https://octoprint.org/)
+*   NAS Server - [TrueNAS SCALE](https://www.truenas.com/truenas-scale/)
 
-*   Raspberry Pi 4
+### ⚙️ Hardware
 
-### Naming Convention
+*   K3s cluster
+    *   Raspberry Pi 4, 8gb model
+    *   **SSD:** 250gb (system / storage)
+*   Octoprint server
+    *   Raspberry Pi 4, 2gb model
+*   TrueNAS Server
+    *   **CPU:** 4 Cores / 8 Threads (i7-4790k)
+    *   **MEM:** 32GB DDR3
+    *   **SSD:** 250GB (system)
+    *   **SSD:** 500GB (general host storage)
+    *   **HDD:** 4x 8TB (RAIDZ2)
 
-I use the following convention to name my servers:
-
-*   Platform
-    *   `HLB` = Homelab
-    *   `AWS` = Amazon Web Services
-    *   `GCP` = Google Cloud Platform
-    *   `MAZ` = Microsoft Azure
-*   Compute Type
-    *   `P` = Physical machine
-    *   `V` = Virtual machine
-*   Configuration
-    *   `S` = Standalone
-    *   `C` = Cluster
-*   Environment
-    *   `D` = Development
-    *   `T` = Test
-    *   `P` = Production
-*   Sequential ID
-    *   `NNN` = (ex: `001`, `002`, ... `100`)
-
-#### Examples
-
-*   `HLB-PSD-001` - A **homelab**-hosted (`HLB`) **physical** machine (`P`) in a **standalone** (`S`) configuration used
-    for **development** (`D`) environment workloads.
-
-*   `AWS-VCP-666` - An **AWS**-hosted (`AWS`) **virtual** machine (`V`) in a **cluster** (`C`) configuration used for
-    **production** (`P`) environment workloads.
-
-### 🥧 Raspberry Pi Systems
+## 🥧 Raspberry Pi Systems
 
 I have several Raspberry Pis deployed throughout my Homelab running a variety of workloads. In order to simplify the
 management of these systems, I use the same operating system installed using the same imager software and settings
@@ -74,37 +57,35 @@ whenever possible. This provides a reliable/repeatable baseline by which I can p
 2.  Insert newly flashed drive into the raspberry pi and power on. Give it 1-2 minutes to boot.
 3.  Test SSH connection: `ssh <username>@<hostname>`
 
-## 🔧 Tooling
+## TrueNAS SCALE
 
-*   [Ansible](https://www.ansible.com/) - a radically simple IT automation platform that makes your applications and
-    systems easier to deploy and maintain.
-*   [Secrets OPerationS (SOPS)](https://github.com/mozilla/sops) - Simple and flexible tool for managing secrets.
-*   [age](https://github.com/FiloSottile/age) - A simple, modern and secure encryption tool (and Go library) with small
-    explicit keys, no config options, and UNIX-style composability.
+The home for all-things "data" in my homelab. Here are some reasons I chose this platform:
 
-## Ansible
+*   Debian-based OS
+*   Rich "app" ecosystem ([Truecharts](https://truecharts.org/))
+*   Several virtualization options
+    *   Can run and manage VMs
+    *   Apps are hosted in a kubernetes environment (K3s) on the system
 
-### Useful commands
+### General Setup
 
-*   Encrypt a secrets file called `secrets.sops.yml`
+After installing the OS, here are the things I like to do to setup and manage the system.
 
-    ```sh
-    sops \
-        --encrypt \
-        --age <age-key> \
-        --encrypted-regex '^(cf_api_token|cf_zone_id)$' \
-        --in-place secrets.sops.yml
-    ```
-
-*   Decrypt a secrets file called `secrets.sops.yml`
-
-    ```sh
-    sops \
-        --decrypt \
-        --age <age-key> \
-        --encrypted-regex '^(cf_api_token|cf_zone_id)$' \
-        --in-place secrets.sops.yml
-    ```
+1.  Enable MFA
+2.  Create non-privileged user(s)
+3.  Create and/or Import Storage Pools
+4.  Create the Datasets
+5.  Create SMB and NFS shares
+    1.  Modify ACLs for these shares
+6.  Configure Data Protection
+    1.  Scrub tasks on each pool
+    2.  Periodic snapshot tasks
+    3.  SMART tests
+7.  Add the Truecharts catalog
+    1.  https://github.com/truecharts/catalog
+8.  Move TrueNAS UI to be served on ports 81 and 444
+9.  Install and configure Traefik or Nginx Proxy Manager
+10. Point DNS to *local* IP address (as I do NOT want to make this server accessible to the public internet but I DO want to use my own domain name)
 
 ## 🧠 Additional Materials
 
