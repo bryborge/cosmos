@@ -81,11 +81,22 @@ After installing the OS, here are the things I like to do to setup and manage th
     1.  Scrub tasks on each pool
     2.  Periodic snapshot tasks
     3.  SMART tests
-7.  Add the Truecharts catalog
+7.  Remove old OpenEBS **(DESTRUCTIVE!)** (Must do this as `root` on cli)
+    1.  `rm /mnt/canister/ix-applications/k3s/server/manifests/zfs-operator.yaml`
+    2.  `k3s kubectl delete -f https://truecharts.org/openebsrem.yaml`
+    3.  `k3s kubectl delete storageClass openebs-zfspv-default`
+8.  Create new home for "PVC" Dataset (on the same Dataset as `ix-applications` is found!)
+9.  Add the Truecharts catalog
     1.  https://github.com/truecharts/catalog
-8.  Move TrueNAS UI to be served on ports 81 and 444
-9.  Install and configure Traefik or Nginx Proxy Manager
-10. Point DNS to *local* IP address (as I do NOT want to make this server accessible to the public internet but I DO want to use my own domain name)
+10. Install `openebs`, `prometheus-operator`, and `cloudnative-pg`
+11. Move TrueNAS UI to be served on ports 81 and 444
+12. Install and configure Traefik
+13. Point DNS to *local* IP address (as I do NOT want to make this server accessible to the public internet but I DO want to use my own domain name)
+
+Learn more about Opencharts at the links below:
+
+*   [Getting Started](https://truecharts.org/scale/)
+*   [Migrate from Cobia to Dragonfish](https://truecharts.org/scale/migrations/cobia-dragonfish/)
 
 ## 🧠 Additional Materials
 
