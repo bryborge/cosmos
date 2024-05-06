@@ -15,15 +15,22 @@
     - prereq
     - download
 
-- name: Prepare k3s servers
-  hosts: server
+# - name: Initialize cluster on "bootstrap" server node
+#   hosts: bootstrap_server
+#   gather_facts: true
+#   become: true
+#   roles:
+#     - cluster_init
+
+- name: Initialize and join the remaining server nodes to the cluster
+  hosts: servers
   gather_facts: true
   become: true
   roles:
     - server
 
-- name: Prepare k3s agents
-  hosts: agent
+- name: Initialize and join agent nodes to the cluster
+  hosts: agents
   gather_facts: true
   become: true
   roles:
