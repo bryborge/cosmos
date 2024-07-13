@@ -1,7 +1,3 @@
-# To Do:
-# 4. Add new load balancer to Route53 as an A-type and redirect all traffic to ECS service - []
-
-
 locals {
   tags = {
     Name        = "Portfolio Site"
