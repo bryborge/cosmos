@@ -4,7 +4,7 @@ Provisions a [Lightweight Kubernetes (k3s)](https://k3s.io/) cluster with Ansibl
 
 This is intentionally _not_ a high availability (HA) cluster configuration. By design, this is a basic k3s cluster for
 tinkering and learning Kubernetes. In the future, this will be refactored for HA (and fault tolerance) like a proper
-production cluster.
+"production" cluster.
 
 ## 🛠️ Built With
 
@@ -16,7 +16,7 @@ production cluster.
 
 These instructions will get you a copy of the project up and running on your local machine.
 
-**Note:** The following steps assumes you are installing this project on a machine running macOS.
+**Note:** The following steps assume you are installing this project on a machine running macOS.
 
 ### ✅ Prerequisites
 
