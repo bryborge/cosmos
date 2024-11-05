@@ -40,19 +40,19 @@ These instructions will get you a copy of the project up and running on your loc
 3.  Install pipenv with pip
 
     ```sh
-    pip install pipenv
+    pip3 install pipenv
     ```
 
-4.  Open a shell with the correct version of python
-
-    ```sh
-    pipenv shell
-    ```
-
-5.  Install dependencies (including `development` dependencies)
+4.  Install dependencies (including `development` dependencies)
 
     ```sh
     pipenv install --dev
+    ```
+
+5.  Open a shell with the correct version of python
+
+    ```sh
+    pipenv shell
     ```
 
 ## Testing

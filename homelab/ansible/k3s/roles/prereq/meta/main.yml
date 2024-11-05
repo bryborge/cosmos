@@ -1,5 +1,5 @@
 galaxy_info:
-  author: sonofborge
+  author: bryborge
   description: Enable IP forwarding. # https://linuxconfig.org/how-to-turn-on-off-ip-forwarding-in-linux
   license: MIT
 

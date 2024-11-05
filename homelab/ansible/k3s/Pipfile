@@ -11,4 +11,4 @@ netaddr = "*"
 ansible-lint = "6.18.0"
 
 [requires]
-python_version = "3.11"
+python_version = "3.13"
