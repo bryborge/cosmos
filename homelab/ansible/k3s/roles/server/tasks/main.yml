@@ -1,4 +1,7 @@
 ---
+# Add necessary master node initialization steps ...
+# Master server node must initialize first to create the cluster and generate the cluster token.
+
 - name: Copy k3s service file
   register: k3s_service
   ansible.builtin.template:
@@ -17,21 +20,21 @@
 
 - name: Wait for node-token
   ansible.builtin.wait_for:
-    path: "{{ server_k3s_location }}/server/node-token"
+    path: "{{ k3s_config_location }}/server/node-token"
 
 - name: Register node-token file access mode
   ansible.builtin.stat:
-    path: "{{ server_k3s_location }}/server"
+    path: "{{ k3s_config_location }}/server"
   register: p
 
 - name: Change file access node-token
   ansible.builtin.file:
-    path: "{{ server_k3s_location }}/server"
+    path: "{{ k3s_config_location }}/server"
     mode: "g+rx,o+rx"
 
 - name: Read node-token from server
   ansible.builtin.slurp:
-    src: "{{ server_k3s_location }}/server/node-token"
+    src: "{{ k3s_config_location }}/server/node-token"
   register: node_token
 
 - name: Store server node-token
@@ -40,7 +43,7 @@
 
 - name: Restore node-token file access
   ansible.builtin.file:
-    path: "{{ server_k3s_location }}/server"
+    path: "{{ k3s_config_location }}/server"
     mode: "{{ p.stat.mode }}"
 
 - name: Create .kube directory
@@ -65,7 +68,7 @@
       --kubeconfig {{ ansible_user_dir }}/.kube/config
   changed_when: true
   vars:
-    endpoint_url: "https://{{ server_ip | ansible.utils.ipwrap }}:6443"
+    endpoint_url: "https://{{ bootstrap_server_ip | ansible.utils.ipwrap }}:6443"
 
 - name: Create kubectl symlink
   ansible.builtin.file:
