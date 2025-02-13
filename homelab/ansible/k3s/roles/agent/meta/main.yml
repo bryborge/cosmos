@@ -1,5 +1,5 @@
 galaxy_info:
-  author: sonofborge
+  author: bryborge
   description: Set up k3s agent nodes.
   license: MIT
 
