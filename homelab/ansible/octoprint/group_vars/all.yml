@@ -1,4 +1,0 @@
----
-system_timezone: "UTC"
-ansible_user: sonofborge
-octoprint_path: /opt/octoprint

@@ -1,22 +1,17 @@
 # 🏠🧪 Homelab
 
-All the Infrastructure as Code (IaC) for my Homelab lives here.
-
 ## 📋 Overview
 
 ### 💽 Software
 
-*   Kubernetes Cluster - [K3s](https://k3s.io/)
-*   3D Printer Server - [Octoprint](https://octoprint.org/)
+*   Kubernetes Cluster - [Talos Linux](https://www.talos.dev/)
 *   NAS Server - [TrueNAS SCALE](https://www.truenas.com/truenas-scale/)
 
 ### ⚙️ Hardware
 
-*   K3s cluster
+*   Talos cluster
     *   Raspberry Pi 4, 8gb model
     *   **SSD:** 250gb (system / storage)
-*   Octoprint server
-    *   Raspberry Pi 4, 2gb model
 *   TrueNAS Server
     *   **CPU:** 4 Cores / 8 Threads (i7-4790k)
     *   **MEM:** 32GB DDR3
@@ -24,52 +19,33 @@ All the Infrastructure as Code (IaC) for my Homelab lives here.
     *   **SSD:** 500GB (general host storage)
     *   **HDD:** 4x 8TB (RAIDZ2)
 
-## 🥧 Raspberry Pi Systems
-
-I have several Raspberry Pis deployed throughout my Homelab running a variety of workloads. In order to simplify the
-management of these systems, I use the same operating system installed using the same imager software and settings
-whenever possible. This provides a reliable/repeatable baseline by which I can provision the systems with Ansible.
+## 🥧 Raspberry Pi Cluster
 
 ### Software Used
 
-*   [Ubuntu Server 22.04 LTS (Jammy Jellyfish)](https://releases.ubuntu.com/jammy/)
+*   [Talos Linux](https://www.talos.dev/)
+*   [Talos Image Factory](https://factory.talos.dev/)
 *   [Raspberry Pi Imager](https://www.raspberrypi.com/software/)
 
 ### Setup
 
-1.  Flash latest Ubuntu LTS (64bit) ARM-based image onto sd card - 16GiB or larger. Use the
-    [Raspberry Pi Imager](https://www.raspberrypi.com/software/). Choose the following options.
-    1.  Set hostname: `<hostname>.local`
-    2.  Enable SSH: `Allow public-key authentication only`
-        1.  Set authorization for: `<contents_of_public_key_file>`
-    3.  Set username and password:
-        1.  Username: `<username>`
-        2.  Password: `<password>`
-    4.  Configure wireless LAN _(only if necessary)_:
-        1.  SSID: `<Wifi Name>`
-            1.  Hidden SSID: `true`
-        2.  Password: `<Wifi Password>`
-    5.  Set locale settings:
-        1.  Timezone: `America/Los_Angeles`
-        2.  Keyboard layout: `us`
-    6.  Eject Media when Finished
-    7.  Enable Telemetry
-2.  Insert newly flashed drive into the raspberry pi and power on. Give it 1-2 minutes to boot.
-3.  Test SSH connection: `ssh <username>@<hostname>`
+1.  TODO: Add setup steps for Talos Linux image creation, installation, and
+          remote management.
 
 ## TrueNAS SCALE
 
-The home for all-things "data" in my homelab. Here are some reasons I chose this platform:
+The home for all-things "data" in my homelab. Here are some reasons I chose this
+platform:
 
 *   Debian-based OS
-*   Rich "app" ecosystem ([Truecharts](https://truecharts.org/))
 *   Several virtualization options
     *   Can run and manage VMs
-    *   Apps are hosted in a kubernetes environment (K3s) on the system
+    *   Apps are hosted in a kubernetes environment (k3s) on the system
 
-### General Setup
+### Setup
 
-After installing the OS, here are the things I like to do to setup and manage the system.
+After installing the OS, here are the things I like to do to setup and manage
+the system.
 
 1.  Enable MFA
 2.  Create non-privileged user(s)
@@ -81,22 +57,6 @@ After installing the OS, here are the things I like to do to setup and manage th
     1.  Scrub tasks on each pool
     2.  Periodic snapshot tasks
     3.  SMART tests
-7.  Remove old OpenEBS **(DESTRUCTIVE!)** (Must do this as `root` on cli)
-    1.  `rm /mnt/canister/ix-applications/k3s/server/manifests/zfs-operator.yaml`
-    2.  `k3s kubectl delete -f https://truecharts.org/openebsrem.yaml`
-    3.  `k3s kubectl delete storageClass openebs-zfspv-default`
-8.  Create new home for "PVC" Dataset (on the same Dataset as `ix-applications` is found!)
-9.  Add the Truecharts catalog
-    1.  https://github.com/truecharts/catalog
-10. Install `openebs`, `prometheus-operator`, and `cloudnative-pg`
-11. Move TrueNAS UI to be served on ports 81 and 444
-12. Install and configure Traefik
-13. Point DNS to *local* IP address (as I do NOT want to make this server accessible to the public internet but I DO want to use my own domain name)
-
-Learn more about Opencharts at the links below:
-
-*   [Getting Started](https://truecharts.org/scale/)
-*   [Migrate from Cobia to Dragonfish](https://truecharts.org/scale/migrations/cobia-dragonfish/)
 
 ## 🧠 Additional Materials
 
