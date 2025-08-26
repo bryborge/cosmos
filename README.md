@@ -1,68 +1,57 @@
-<div align="center">
-  <br />
-  <img src="../assets/logo.png?raw=true" alt="The Cosmos project logo depicting an astronaut" width="190" height="226" />
-  <br />
-  <h1 align="center">Cosmos</h1>
-  <p align="center">
-    <i>"If you wish to make an 🍎 🥧 from scratch, you must first invent the universe."</i> -- Carl Sagan
-    <br />
-    <br />
-    <a href="https://github.com/bryborge/cosmos/blob/main/README.md">
-      <strong>Explore the docs »</strong>
-    </a>
-  </p>
-  <br />
-</div>
+# Cosmos
+
+> "If you wish to make an 🍎 🥧 from scratch, you must first invent the universe."
+>
+> -- Carl Sagan
 
 ## 🚀 About the Project
 
-**Cosmos** is a monorepo where I define and manage infrastructure in my homelab and on various cloud provider platforms,
-adhering to Infrastructure as Code (IaC) principles where possible.
+**Cosmos** is a monorepo where the infrastructure on various cloud provider platforms is defined, adhering to Infrastructure as Code (IaC) principles where possible.
 
-### 🧬 Structure
+## 🧬 Structure
 
-This project is subdivided by cloud provider platform.  Each platform contains documentation specific to what tools are
-used to manage it, and how to use them.
+This project is subdivided by cloud provider platform. Each platform contains documentation specific to what tools are used to manage it, and how to use them.
 
-### 🔐 SecOps
+## 🔧 Tooling
 
-IT security and strategies for handling secrets is an entire discipline to itself. After much deliberation and weighing tradeoffs, I settled on using [SOPS (Standard Operating ProcedureS)](https://github.com/getsops/sops) and [Age](https://github.com/FiloSottile/age) for encryption of sensitive information that will be committed to version control.
+*   [Ansible](https://www.ansible.com/) - a radically simple IT automation platform that makes your applications and systems easier to deploy and maintain.
+*   [Terraform](https://www.terraform.io/) - Infrastructure automation to provision and manage resources in any cloud or data center.
+*   [Secrets OPerationS (SOPS)](https://github.com/mozilla/sops) - Simple and flexible tool for managing secrets.
+*   [Age](https://github.com/FiloSottile/age) - A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability.
 
-#### What is SOPS?
+## 🔐 SecOps
 
-A simple and flexible tool for managing secrets.
-
-Github [Link](https://github.com/getsops/sops)
-
-#### What is Age?
-
-Pronounced (`aghe` with a "hard" `g`), it's a simple, modern and secure encryption tool with small explicit keys, no config options, and UNIX-style composability.
-
-#### Tradeoffs
+IT security and strategies for handling secrets is an entire discipline to itself. After much deliberation and weighing tradeoffs, I settled on using SOPs and Age for encryption of sensitive information that will be committed to version control.
 
 | Pros | Cons |
 |------|------|
 | Ease of intergration (in the future) with other key management services | Operational overhead |
 | File format agnostic | Key management complexity |
 | It's free 💰 |  |
-|  |  |
 
-#### General Thoughts
+#### ✏️ Edit Encrypted File
 
-This, by itself, is **NOT** comprehensive, but is "adequate enough" for me. None of the workloads, systems, or processes managed here are life-or-death.  This project is, in large part, centered around learning and tinkering.  That said, I have taken time to consider what security means to me and my IT infrastructure, and implore you to do the same.
+*   Decrypt a file (in-place):
 
-## 🔧 Tooling
+    ```sh
+    sops --decrypt --in-place terraform.tfvars.enc
+    ```
 
-*   [Ansible](https://www.ansible.com/) - a radically simple IT automation platform that makes your applications and
-    systems easier to deploy and maintain.
-*   [Terraform](https://www.terraform.io/) - Infrastructure automation to provision and manage resources in any cloud or data center.
-*   [Secrets OPerationS (SOPS)](https://github.com/mozilla/sops) - Simple and flexible tool for managing secrets.
-*   [Age](https://github.com/FiloSottile/age) - A simple, modern and secure encryption tool (and Go library) with small
-    explicit keys, no config options, and UNIX-style composability.
+*   Make whatever edits you need.
+
+*   Encrypt it (in-place):
+
+    ```sh
+    sops --encrypt --in-place terraform.tfvars.enc
+    ```
+
+### Please Note
+
+This, by itself, is **NOT** comprehensive, but I have judged this to be "adequate enough" for my purposes. None of the workloads, systems, or processes I manage here are life-or-death. This project is, in large part, centered around learning and tinkering. That said, I have taken time to consider what security means to me and my IT infrastructure, and implore you to do the same.
 
 ## 🔤 Naming Convention
 
-I use the following convention to name my compute where possible:
+The following convention is used to name various instances of compute:
 
 *   **Platform**
 
@@ -118,7 +107,3 @@ I use the following convention to name my compute where possible:
 
 *   `AWS-VCP-666` - An **AWS**-hosted (`AWS`) **virtual** machine (`V`) in a **cluster** (`C`) configuration used for
     **production** (`P`) environment workloads.
-
-## 🪪 License
-
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
